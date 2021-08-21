@@ -1,2 +1,0 @@
-# amirlogic.github.io
-EvoCass 
