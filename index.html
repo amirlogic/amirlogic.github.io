@@ -136,9 +136,34 @@
 
 	</nav>
 
-	<!-- <section>
-		<div id="topimg"></div>
-	</section> -->
+	<script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+	<script>
+		// Set up the scene, camera, and renderer
+		var scene = new THREE.Scene();
+		var camera = new THREE.PerspectiveCamera(75, window.innerWidth/400, 0.1, 1000);	// window.innerHeight
+		var renderer = new THREE.WebGLRenderer();
+		renderer.setSize(window.innerWidth, 400);	// window.innerHeight
+		document.body.appendChild(renderer.domElement);
+
+		// Create a blue cube and add it to the scene
+		var geometry = new THREE.BoxGeometry();
+		var material = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
+		var cube = new THREE.Mesh( geometry, material );
+		scene.add( cube );
+
+		// Set the initial position of the camera and the cube
+		camera.position.z = 5;
+		cube.position.set(0, 0, 0);
+
+		// Animate the cube
+		function animate() {
+			requestAnimationFrame(animate);
+			cube.rotation.x += 0.01;
+			cube.rotation.y += 0.01;
+			renderer.render(scene, camera);
+		}
+		animate();
+	</script>
 
 	<main class="container-fluid vh-100">
 
