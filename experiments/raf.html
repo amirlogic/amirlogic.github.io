@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>requestAnimationFrame Demo</title>
+</head>
+<body>
+    
+    <div id="anim" style="font-size:xx-large;"></div>
+   
+    <script>
+
+        let i=0
+
+        function tick(){
+
+            document.getElementById("anim").innerText = i
+            i++
+
+            window.requestAnimationFrame(tick)
+        }
+
+        window.requestAnimationFrame(tick)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>setInterval Demo</title>
+</head>
+<body>
+    
+    <div id="anim" style="font-size:xx-large;"></div>
+   
+    <script>
+
+        let i=0
+
+        setInterval(()=>{ 
+
+            document.getElementById("anim").innerText = i
+            i++
+
+
+         },300)
+
+
+    </script>
+</body>
+</html>
