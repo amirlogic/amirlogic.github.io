@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Wheel animation</title>
+</head>
+<body>
+    
+    <div>
+        <svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(200,200)">
+                <circle cx="132" cy="132" r="122" fill="black"/>
+                <circle id="whitecircle" cx="70.5" cy="89.5" r="19.5" fill="white"/>
+            </g>
+        </svg>
+    </div>
+
+    <div id="xval"></div>
+    <div id="yval"></div>
+    <div id="xincr"></div>
+    <div id="typeofx"></div>
+    <div id="typeofy"></div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script>
+
+        let wcircle = d3.select("#whitecircle")
+
+        let mv = 0.9
+
+        let radius = 74.755 // radius² = ( 132 - 70.5 )² + ( 132 - 89.5)²
+
+        let ocx = 132
+
+        let ocy = 132
+
+        let x = 70.5
+
+        let y = 89.5
+
+        let xincr = true
+
+        const yPos = (xpos=70.5)=>{
+
+            
+
+            let result
+
+            if(xincr){
+
+                result = Math.pow((132-xpos),2)
+
+                result = Math.pow(radius,2) - result
+
+                result = Math.pow(result,0.5)
+
+                result = 132 - result
+            }
+            else{
+
+                result = Math.pow((xpos-ocx),2)
+
+                result = Math.pow(radius,2) - result
+
+                result = Math.pow(result,0.5)
+
+                result = ocy + result
+
+                //result = 89.5
+            }
+            
+
+            if(result < 0){
+                return 89.5
+            }
+
+            return result
+        }
+
+        
+
+        function tick(){
+
+            //document.getElementById("typeofx").innerText = typeof(x)
+
+            //document.getElementById("typeofy").innerText = typeof(y)
+
+            if( isNaN(y) ){
+
+                console.log(x)
+            }
+
+            wcircle.attr("cx",x)
+
+            wcircle.attr("cy",y)
+
+
+
+            if( x >= ( ocx+radius )  ){ 
+
+                xincr = false
+            }
+            else if( x <= ( ocx-radius ) ){
+
+                xincr = true
+            }
+
+
+
+            if(xincr){
+
+                x += ( y !== ocy ) ? ( (ocy-y)/radius )*mv : ( 0.1/radius )*mv
+            }
+            else{
+
+                x -= ( y !== ocy ) ? ( (y-ocy)/radius )*mv : ( 0.1/radius )*mv
+            }
+
+            if(x > ocx+radius ){
+
+                x = ocx+radius
+
+            }
+            else if( x < ocx-radius ){
+               
+                x = ocx-radius
+            }
+
+            y = yPos(x)
+
+            //document.getElementById("yval").innerText = y
+
+            //document.getElementById("xval").innerText = x
+
+            //document.getElementById("xincr").innerText = xincr
+
+           
+           
+
+            window.requestAnimationFrame(tick)
+        }
+
+        window.requestAnimationFrame(tick)
+
+    </script>
+
+   
+
+</body>
+</html>
