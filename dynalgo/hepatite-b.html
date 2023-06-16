@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>BiomedLogic - Hépatite B</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> 
+<meta name="description" content="Sérologie Hépatite B"> <meta name="viewport" content="width=device-width, initial-scale=1.0"><script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=41DTCUO3aVbp8UfKcv_CAlu1Hy9zaL87hwhL8sG6o_teEXicGk22uiw7LseSayKGYR6pUEFPxvfdFK3LWnA5ciYRMv9gwapSvKpIGm7_stLBURXA79oIxCDPQNZMpstZFqhUNr4i0Tx4WlMFBIjByQ" charset="UTF-8"></script><style>
+body{ color:#333333; font-size:90%; } @media only screen and (max-width: 600px) {
+  body { font-size:16px; }
+} #algohead{ color:#555555; padding:40px 4% 20px 4%; border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; }#dyncont{ min-height:700px; padding-top:50px; border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; } .inpbox{ padding:10px 5%; background-color:#f7faff; }.inptxt{ padding-bottom:10px; font-weight:600; color:#5485d3; text-align:right; } #xcmd{ padding:9px 15px; color:#FFFFFF; background-color:#bf4e4e; border:none; } .steptxt{ padding:20px 5%; background-color:#FEFEFE; } 
+</style>
+
+
+
+<script>
+
+let stepdata = {
+"54237730-4a6a-11e9-866f-e1e8becf3aa7":{"sid":"54237730-4a6a-11e9-866f-e1e8becf3aa7","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"0659ad80-4a6a-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2019-03-19T17:13:35.012Z"},
+"f2b127c0-4b1a-11e9-add9-3985658c2536":{"sid":"f2b127c0-4b1a-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"097678e0-4aa1-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$5 == \"pos\"","txt":"<p>IgM anti-HBc positifs: Début récent de l'infection (probablement aïgue)</p>\n\n<p>Attention: peut se positiver lors des réactivations.</p>","tag":"IgM HBc+","xdisp":null,"indata":[],"pos":"0","editime":"2019-03-20T14:17:52.444Z"},
+"d3c0c6f0-4b64-11e9-add9-3985658c2536":{"sid":"d3c0c6f0-4b64-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"097678e0-4aa1-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"false","txt":"<p></p>","tag":"xxxxxxxxxxxxx","xdisp":null,"indata":[],"pos":"1","editime":"2019-03-20T23:06:43.296Z"},
+"38c26750-4b67-11e9-add9-3985658c2536":{"sid":"38c26750-4b67-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"097678e0-4aa1-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$5 == \"neg\"","txt":"<p>IgM anti-HBc négatifs: Infection chronique</p>\n\n<p>Rechercher les marqueurs de réplication virale: Ag HBe et anticorps anti-HBe</p>","tag":"IgM HBc-","xdisp":null,"indata":["654de950-49d4-11e9-866f-e1e8becf3aa7","9c288d50-4aff-11e9-add9-3985658c2536"],"pos":"2","editime":"2019-03-20T23:23:51.750Z"},
+"8a72ba00-4b67-11e9-add9-3985658c2536":{"sid":"8a72ba00-4b67-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"097678e0-4aa1-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"3","editime":"2019-03-20T23:26:08.801Z"},
+"8a732f30-4b67-11e9-add9-3985658c2536":{"sid":"8a732f30-4b67-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"38c26750-4b67-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$3 == \"pos\" && $4 == \"neg\"","txt":"<p>Ag HBe+: Réplication active</p>","tag":"Ag HBe+ / Anti HBe-","xdisp":null,"indata":[],"pos":"0","editime":"2019-03-20T23:26:08.804Z"},
+"80141f30-4cfd-11e9-8bf2-6be1f15d9745":{"sid":"80141f30-4cfd-11e9-8bf2-6be1f15d9745","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"38c26750-4b67-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$3 == \"neg\" && $4 == \"pos\"","txt":"<p>Anti-HBe+: Pas de réplication, sauf si mutant pré-C</p>\n\n<p>Attention: Si le virus est un mutant pré-C (qui peut représenter plus de 50% des hépatites B chroniques), on aura une réplication virale même si les anti-HBe  sont présents</p>\n\n<p>Chez un porteur sain: ADN viral indétectable, transaminases normales</p>\n\n<p>Réplication active d'un mutant pré-C: ADN viral détecté, transaminases fluctuantes</p>","tag":"Ag HBe- / Anti HBe+","xdisp":null,"indata":[],"pos":"1","editime":"2019-03-22T23:52:07.076Z"},
+"bb466360-4cfd-11e9-8bf2-6be1f15d9745":{"sid":"bb466360-4cfd-11e9-8bf2-6be1f15d9745","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"38c26750-4b67-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$3 == \"pos\" && $4 == \"pos\"","txt":"<p>Ag HBe+ et Anti HBe+: Situation anormale</p>","tag":"Ag HBe+ / Anti HBe+","xdisp":null,"indata":[],"pos":"2","editime":"2019-03-22T23:53:46.391Z"},
+"26f7b450-4cff-11e9-8bf2-6be1f15d9745":{"sid":"26f7b450-4cff-11e9-8bf2-6be1f15d9745","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"38c26750-4b67-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"3","editime":"2019-03-23T00:03:56.566Z"},
+"61a961f0-4afe-11e9-add9-3985658c2536":{"sid":"61a961f0-4afe-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"3bd4ad40-4a9f-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2019-03-20T10:53:23.215Z"},
+"d912af60-4a6a-11e9-866f-e1e8becf3aa7":{"sid":"d912af60-4a6a-11e9-866f-e1e8becf3aa7","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"5422daf0-4a6a-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"pos\" && $1 == \"neg\" && $2 == \"neg\"","txt":"<p>Anti HBc seuls: Infection ancienne résolue, ou fenêtre sérologique</p>","tag":"Anti HBc seuls","xdisp":null,"indata":[],"pos":"0","editime":"2019-03-19T17:17:18.038Z"},
+"097678e0-4aa1-11e9-add9-3985658c2536":{"sid":"097678e0-4aa1-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"5422daf0-4a6a-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"pos\" && $1 == \"pos\" && $2 == \"neg\"","txt":"<p>HBs+: Infection évolutive dont le caractère aiguë ou\nchronique est déterminé par la clinique, la présence\nd’IgM anti-HBc et l’évolution à six mois</p>\n\n<p>Test complémentaire: IgM anti-HBc</p>","tag":"HBs+","xdisp":null,"indata":["1158b460-4b00-11e9-add9-3985658c2536"],"pos":"1","editime":"2019-03-19T23:45:12.047Z"},
+"f2b03d60-4b1a-11e9-add9-3985658c2536":{"sid":"f2b03d60-4b1a-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"5422daf0-4a6a-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"pos\" && $1 == \"neg\" && $2 == \"pos\"","txt":"<p>HBs négatif, anti-HBs positif: Infection guérie</p>","tag":"ACHBs+","xdisp":null,"indata":[],"pos":"2","editime":"2019-03-20T14:17:52.439Z"},
+"8bf5d730-4b1d-11e9-add9-3985658c2536":{"sid":"8bf5d730-4b1d-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"5422daf0-4a6a-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"pos\" && $1 == \"pos\" && $2 == \"pos\"","txt":"<p>HBs et anticorps anti-HBs positifs: Situation anormale, à investiguer</p>","tag":"Tous positifs","xdisp":null,"indata":[],"pos":"3","editime":"2019-03-20T14:36:28.580Z"},
+"a1043f70-4ce6-11e9-8bf2-6be1f15d9745":{"sid":"a1043f70-4ce6-11e9-8bf2-6be1f15d9745","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"5422daf0-4a6a-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"4","editime":"2019-03-22T21:08:23.912Z"},
+"bb46ffa0-4cfd-11e9-8bf2-6be1f15d9745":{"sid":"bb46ffa0-4cfd-11e9-8bf2-6be1f15d9745","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"80141f30-4cfd-11e9-8bf2-6be1f15d9745","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2019-03-22T23:53:46.394Z"},
+"8014bb70-4cfd-11e9-8bf2-6be1f15d9745":{"sid":"8014bb70-4cfd-11e9-8bf2-6be1f15d9745","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"8a732f30-4b67-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2019-03-22T23:52:07.079Z"},
+"a1059f00-4ce6-11e9-8bf2-6be1f15d9745":{"sid":"a1059f00-4ce6-11e9-8bf2-6be1f15d9745","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"8bf5d730-4b1d-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2019-03-22T21:08:23.921Z"},
+"b376cb50-49c6-11e9-866f-e1e8becf3aa7":{"sid":"b376cb50-49c6-11e9-866f-e1e8becf3aa7","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"b3701490-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"neg\" && $1 == \"neg\" && $2 == \"neg\"","txt":"<p>Sujet non infecté et non vacciné</p>\n\n<p>Prendre en compte la période d'incubation d'environ un mois</p>","tag":"Tout négatif","xdisp":null,"indata":[],"pos":"0","editime":"2019-03-18T21:42:17.478Z"},
+"0659ad80-4a6a-11e9-866f-e1e8becf3aa7":{"sid":"0659ad80-4a6a-11e9-866f-e1e8becf3aa7","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"b3701490-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"neg\" && $1 == \"neg\" && $2 == \"pos\"","txt":"<p>Sujet vacciné, jamais de contact avec le virus</p>\n\n<p>Titre d'anticorps anti-HBs protecteurs: 10 UI/l (OMS)</p>","tag":"Vaccination","xdisp":null,"indata":[],"pos":"1","editime":"2019-03-19T17:11:24.505Z"},
+"5422daf0-4a6a-11e9-866f-e1e8becf3aa7":{"sid":"5422daf0-4a6a-11e9-866f-e1e8becf3aa7","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"b3701490-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"pos\"","txt":"<p>Anti HBc totaux positifs: Le sujet a été en contact avec le virus</p>","tag":"Infection","xdisp":null,"indata":[],"pos":"2","editime":"2019-03-19T17:13:35.008Z"},
+"d910daa0-4a6a-11e9-866f-e1e8becf3aa7":{"sid":"d910daa0-4a6a-11e9-866f-e1e8becf3aa7","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"b3701490-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"neg\" && $1 == \"pos\" && $2 == \"pos\"","txt":"<p>Erreur: Les anti HBs ne peuvent pas être positifs en même temps que l'antigène HBs!</p>","tag":"Erreur 0","xdisp":null,"indata":[],"pos":"3","editime":"2019-03-19T17:17:18.027Z"},
+"3bd4ad40-4a9f-11e9-add9-3985658c2536":{"sid":"3bd4ad40-4a9f-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"b3701490-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"neg\" && $1 == \"pos\" && $2 == \"neg\"","txt":"<p>Antigène HBs positif seul: Début d'infection, ou erreur de dosage</p>\n\n<p>(Les anti-HBc apparaissent environ 2 semaines après l'Ag HBs)</p>","tag":"HBs seul","xdisp":null,"indata":[],"pos":"4","editime":"2019-03-19T23:32:17.557Z"},
+"61a8c5b0-4afe-11e9-add9-3985658c2536":{"sid":"61a8c5b0-4afe-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"b3701490-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"5","editime":"2019-03-20T10:53:23.211Z"},
+"065a70d0-4a6a-11e9-866f-e1e8becf3aa7":{"sid":"065a70d0-4a6a-11e9-866f-e1e8becf3aa7","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"b376cb50-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2019-03-19T17:11:24.509Z"},
+"26f82980-4cff-11e9-8bf2-6be1f15d9745":{"sid":"26f82980-4cff-11e9-8bf2-6be1f15d9745","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"bb466360-4cfd-11e9-8bf2-6be1f15d9745","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2019-03-23T00:03:56.568Z"},
+"38c41500-4b67-11e9-add9-3985658c2536":{"sid":"38c41500-4b67-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"d3c0c6f0-4b64-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2019-03-20T23:23:51.761Z"},
+"3bd52270-4a9f-11e9-add9-3985658c2536":{"sid":"3bd52270-4a9f-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"d910daa0-4a6a-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2019-03-19T23:32:17.560Z"},
+"09771520-4aa1-11e9-add9-3985658c2536":{"sid":"09771520-4aa1-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"d912af60-4a6a-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2019-03-19T23:45:12.050Z"},
+"8bf7abf0-4b1d-11e9-add9-3985658c2536":{"sid":"8bf7abf0-4b1d-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"f2b03d60-4b1a-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2019-03-20T14:36:28.592Z"},
+"d3c13c20-4b64-11e9-add9-3985658c2536":{"sid":"d3c13c20-4b64-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":"f2b127c0-4b1a-11e9-add9-3985658c2536","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2019-03-20T23:06:43.299Z"},
+"b3701490-49c6-11e9-866f-e1e8becf3aa7":{"sid":"b3701490-49c6-11e9-866f-e1e8becf3aa7","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","previd":null,"userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"origin","cdts":"","txt":"<p>Marqueurs utilisés dans le dépistage: Anti HBc, Ag HBs et Anti HBs</p>\n\n<p>Selon les recommendations de l'<a href=\"https://www.has-sante.fr/portail/upload/docs/application/pdf/2017-01/dir1/argumentaire_hepatites-b-c-d_vd.pdf\">HAS</a></p>","tag":"Origin","xdisp":"","indata":["b3751da0-49c6-11e9-866f-e1e8becf3aa7","b8902f00-49c6-11e9-866f-e1e8becf3aa7","400729e0-49cf-11e9-866f-e1e8becf3aa7"],"pos":"0","editime":"2019-03-18T21:42:17.439Z"}}
+
+let inputdata = {
+"b3751da0-49c6-11e9-866f-e1e8becf3aa7":{"nid":"b3751da0-49c6-11e9-866f-e1e8becf3aa7","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"Anticorps anti-HBc totaux","inopts":[["pos","Positif"],["neg","Négatif"]],"pos":"0","editime":"2019-03-18T21:42:17.466Z"},
+"b8902f00-49c6-11e9-866f-e1e8becf3aa7":{"nid":"b8902f00-49c6-11e9-866f-e1e8becf3aa7","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"Antigène HBs","inopts":[["pos","Positif"],["neg","Négatif"]],"pos":"1","editime":"2019-03-18T21:42:26.032Z"},
+"400729e0-49cf-11e9-866f-e1e8becf3aa7":{"nid":"400729e0-49cf-11e9-866f-e1e8becf3aa7","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"Anticorps anti-HBs","inopts":[["pos","Positif"],["neg","Négatif"]],"pos":"2","editime":"2019-03-18T22:43:29.279Z"},
+"654de950-49d4-11e9-866f-e1e8becf3aa7":{"nid":"654de950-49d4-11e9-866f-e1e8becf3aa7","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"Antigène HBe","inopts":[["pos","Positif"],["neg","Négatif"]],"pos":"3","editime":"2019-03-18T23:20:19.301Z"},
+"9c288d50-4aff-11e9-add9-3985658c2536":{"nid":"9c288d50-4aff-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"Anticorps anti-HBe","inopts":[["pos","Positif"],["neg","Négatif"]],"pos":"4","editime":"2019-03-20T11:02:10.854Z"},
+"1158b460-4b00-11e9-add9-3985658c2536":{"nid":"1158b460-4b00-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"IgM anti-HBc","inopts":[["pos","Positif"],["neg","Négatif"]],"pos":"5","editime":"2019-03-20T11:05:27.462Z"},
+"f6bff2e0-4b12-11e9-add9-3985658c2536":{"nid":"f6bff2e0-4b12-11e9-add9-3985658c2536","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"Transaminases","inopts":[["high","Elevées"],["low","Basses"],["norm","Normales"]],"pos":"6","editime":"2019-03-20T13:20:43.279Z"},
+"7c87b410-7581-11e9-9f7b-e77384670058":{"nid":"7c87b410-7581-11e9-9f7b-e77384670058","algo":"b3701491-49c6-11e9-866f-e1e8becf3aa7","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"stem","intxt":"null","inopts":[],"pos":"7","editime":"2019-05-13T13:17:41.202Z"}}
+
+let stepstack = [ ["b3701490-49c6-11e9-866f-e1e8becf3aa7",true] ]
+
+let inputvalue = {"b3751da0-49c6-11e9-866f-e1e8becf3aa7":[false,""],
+"b8902f00-49c6-11e9-866f-e1e8becf3aa7":[false,""],
+"400729e0-49cf-11e9-866f-e1e8becf3aa7":[false,""],
+"654de950-49d4-11e9-866f-e1e8becf3aa7":[false,""],
+"9c288d50-4aff-11e9-add9-3985658c2536":[false,""],
+"1158b460-4b00-11e9-add9-3985658c2536":[false,""],
+"f6bff2e0-4b12-11e9-add9-3985658c2536":[false,""],
+"7c87b410-7581-11e9-9f7b-e77384670058":[false,""]
+}
+
+let stepInput = (inid,input)=>{ 
+
+	inputvalue[inid][1] = input
+	inputvalue[inid][0] = true
+}
+
+
+let htrefresh = ()=>{ 
+
+	let dynHtml = ""
+	for( s=0; s<stepstack.length; s++ )
+	{
+	dynHtml += "<div style=\"background-color:#FEFEFE;\"><div class=\"steptxt\">"
+	+ stepdata[ stepstack[s][0] ].txt + "</div>"
+	dynHtml += stepdata[ stepstack[s][0] ].indata.map( (inrr)=>{
+	if( inputdata[ inrr ].intype == "select" ){
+	return "<div class=\"inpbox row\"><div class=\"inptxt col\">" 
+	+ inputdata[ inrr ].intxt + "</div><div class=\"inpcont col\"><select onchange=\"stepInput('"+inrr+"',this.value)\">" 
+	+ "<option value=\"\">---</option>" 
+	+ inputdata[ inrr ].inopts.map( (optrr)=>{
+	if( optrr[0] == inputvalue[ inrr ][1] ){
+	return "<option value=\"" + optrr[0] 
+	+ "\" selected=\"selected\">" + optrr[1] + "</option>"
+	}
+	else{
+	return "<option value=\"" + optrr[0] + "\">" + optrr[1] + "</option>"
+	}
+	} ).join('') +  "</select></div></div>"
+	}
+	else if( inputdata[ inrr ].intype == "number" ){
+	return "<div style=\"padding:10px;\">" + inputdata[ inrr ].intxt + " <input type=\"number\" onchange=\"stepInput('"+inrr+"',this.value)\" />"
+	+ "</div>"
+	}
+	else{
+	return "<div>ERROR</div>"
+	}
+	}).join('')
+	dynHtml += "</div>"
+	if( stepstack[s][1] == true ){
+	dynHtml += "<div style=\"padding:10px; margin-top:30px; margin-bottom:100px; \"><input id=\"xcmd\" type=\"button\" class=\"btn btn-primary\" value=\"Next\" onclick=\"extend()\" /> <a href=\"#\" style=\"margin-left:30px;\" onclick=\"document.location.reload()\" />Reset</a></div>"
+	}
+	}
+	document.getElementById('dyncont').innerHTML = dynHtml
+}
+
+
+let extend = ()=>{ 
+
+	let openstep = true
+	let doninput
+	let dologic
+	while( openstep == true ){
+	openstep = false
+	doninput = true
+	if( stepstack[ stepstack.length-1 ][1] == true ){
+	if( stepdata[ stepstack[ stepstack.length-1 ][0] ].indata.length == 0 ){
+	dologic = true
+	}
+	else{
+	for( n=0; n<stepdata[ stepstack[ stepstack.length-1 ][0] ].indata.length; n++ )
+	{
+	if( inputvalue[ stepdata[ stepstack[ stepstack.length-1 ][0] ].indata[n] ][0] == false ){
+	doninput = false
+	}
+	}
+	if( doninput == true ){
+	dologic = true
+	}
+	else{
+	dologic = false
+	}
+	}
+	if( dologic == true ){
+	if( stepstack[ stepstack.length-1 ][0] == "0659ad80-4a6a-11e9-866f-e1e8becf3aa7" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "097678e0-4aa1-11e9-add9-3985658c2536" ){
+	if(inputvalue["1158b460-4b00-11e9-add9-3985658c2536"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "f2b127c0-4b1a-11e9-add9-3985658c2536",true ] )
+	openstep = true
+	}
+	else if(false){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "d3c0c6f0-4b64-11e9-add9-3985658c2536",true ] )
+	openstep = true
+	}
+	else if(inputvalue["1158b460-4b00-11e9-add9-3985658c2536"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "38c26750-4b67-11e9-add9-3985658c2536",true ] )
+	openstep = true
+	}
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "38c26750-4b67-11e9-add9-3985658c2536" ){
+	if(inputvalue["654de950-49d4-11e9-866f-e1e8becf3aa7"][1] == "pos" && inputvalue["9c288d50-4aff-11e9-add9-3985658c2536"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "8a732f30-4b67-11e9-add9-3985658c2536",true ] )
+	openstep = true
+	}
+	else if(inputvalue["654de950-49d4-11e9-866f-e1e8becf3aa7"][1] == "neg" && inputvalue["9c288d50-4aff-11e9-add9-3985658c2536"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "80141f30-4cfd-11e9-8bf2-6be1f15d9745",true ] )
+	openstep = true
+	}
+	else if(inputvalue["654de950-49d4-11e9-866f-e1e8becf3aa7"][1] == "pos" && inputvalue["9c288d50-4aff-11e9-add9-3985658c2536"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "bb466360-4cfd-11e9-8bf2-6be1f15d9745",true ] )
+	openstep = true
+	}
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "3bd4ad40-4a9f-11e9-add9-3985658c2536" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "5422daf0-4a6a-11e9-866f-e1e8becf3aa7" ){
+	if(inputvalue["b3751da0-49c6-11e9-866f-e1e8becf3aa7"][1] == "pos" && inputvalue["b8902f00-49c6-11e9-866f-e1e8becf3aa7"][1] == "neg" && inputvalue["400729e0-49cf-11e9-866f-e1e8becf3aa7"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "d912af60-4a6a-11e9-866f-e1e8becf3aa7",true ] )
+	openstep = true
+	}
+	else if(inputvalue["b3751da0-49c6-11e9-866f-e1e8becf3aa7"][1] == "pos" && inputvalue["b8902f00-49c6-11e9-866f-e1e8becf3aa7"][1] == "pos" && inputvalue["400729e0-49cf-11e9-866f-e1e8becf3aa7"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "097678e0-4aa1-11e9-add9-3985658c2536",true ] )
+	openstep = true
+	}
+	else if(inputvalue["b3751da0-49c6-11e9-866f-e1e8becf3aa7"][1] == "pos" && inputvalue["b8902f00-49c6-11e9-866f-e1e8becf3aa7"][1] == "neg" && inputvalue["400729e0-49cf-11e9-866f-e1e8becf3aa7"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "f2b03d60-4b1a-11e9-add9-3985658c2536",true ] )
+	openstep = true
+	}
+	else if(inputvalue["b3751da0-49c6-11e9-866f-e1e8becf3aa7"][1] == "pos" && inputvalue["b8902f00-49c6-11e9-866f-e1e8becf3aa7"][1] == "pos" && inputvalue["400729e0-49cf-11e9-866f-e1e8becf3aa7"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "8bf5d730-4b1d-11e9-add9-3985658c2536",true ] )
+	openstep = true
+	}
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "80141f30-4cfd-11e9-8bf2-6be1f15d9745" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "8a732f30-4b67-11e9-add9-3985658c2536" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "8bf5d730-4b1d-11e9-add9-3985658c2536" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "b3701490-49c6-11e9-866f-e1e8becf3aa7" ){
+	if(inputvalue["b3751da0-49c6-11e9-866f-e1e8becf3aa7"][1] == "neg" && inputvalue["b8902f00-49c6-11e9-866f-e1e8becf3aa7"][1] == "neg" && inputvalue["400729e0-49cf-11e9-866f-e1e8becf3aa7"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "b376cb50-49c6-11e9-866f-e1e8becf3aa7",true ] )
+	openstep = true
+	}
+	else if(inputvalue["b3751da0-49c6-11e9-866f-e1e8becf3aa7"][1] == "neg" && inputvalue["b8902f00-49c6-11e9-866f-e1e8becf3aa7"][1] == "neg" && inputvalue["400729e0-49cf-11e9-866f-e1e8becf3aa7"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "0659ad80-4a6a-11e9-866f-e1e8becf3aa7",true ] )
+	openstep = true
+	}
+	else if(inputvalue["b3751da0-49c6-11e9-866f-e1e8becf3aa7"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "5422daf0-4a6a-11e9-866f-e1e8becf3aa7",true ] )
+	openstep = true
+	}
+	else if(inputvalue["b3751da0-49c6-11e9-866f-e1e8becf3aa7"][1] == "neg" && inputvalue["b8902f00-49c6-11e9-866f-e1e8becf3aa7"][1] == "pos" && inputvalue["400729e0-49cf-11e9-866f-e1e8becf3aa7"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "d910daa0-4a6a-11e9-866f-e1e8becf3aa7",true ] )
+	openstep = true
+	}
+	else if(inputvalue["b3751da0-49c6-11e9-866f-e1e8becf3aa7"][1] == "neg" && inputvalue["b8902f00-49c6-11e9-866f-e1e8becf3aa7"][1] == "pos" && inputvalue["400729e0-49cf-11e9-866f-e1e8becf3aa7"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "3bd4ad40-4a9f-11e9-add9-3985658c2536",true ] )
+	openstep = true
+	}
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "b376cb50-49c6-11e9-866f-e1e8becf3aa7" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "bb466360-4cfd-11e9-8bf2-6be1f15d9745" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "d3c0c6f0-4b64-11e9-add9-3985658c2536" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "d910daa0-4a6a-11e9-866f-e1e8becf3aa7" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "d912af60-4a6a-11e9-866f-e1e8becf3aa7" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "f2b03d60-4b1a-11e9-add9-3985658c2536" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "f2b127c0-4b1a-11e9-add9-3985658c2536" ){
+	}
+	}
+	}
+	}
+	htrefresh()
+}
+
+
+let initLoad = ()=>{ 
+
+	htrefresh()
+}
+
+
+</script></head><body onload="initLoad()"><div id="algohead" class="container"><h5>BiomedLogic - Hépatite B</h5></div><div id="dyncont" class="container">Loading...</div><noscript>Error: You must activate Javascript to use this website</noscript></body></html>
