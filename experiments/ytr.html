@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+
+    <script>
+
+      let v = 0
+
+      let s = 0
+
+      const vdata = [
+
+          { url:'https://www.youtube.com/v/9nniwr-7Em8?version=3', start:340, dur:80, text:"GitHub AI"  },    //?start=47&autoplay=1&
+
+          { url:'https://www.youtube.com/v/b2814N7HmAQ?version=3', start:36, dur:190, text:"Mentour NOW - Airport"  },   // ?start=78&autoplay=1
+
+          { url:'https://www.youtube.com/v/pzDBRNOeAow?version=3', start:24, dur:80, text:"NASA Space Flight - This week"  },  // ?start=78&autoplay=1&
+      ]
+      
+      
+
+      function startTimer(){
+
+          setInterval(()=>{ s++; document.getElementById('seks').innerText=s; },1000)
+      }
+
+  </script>
+
+  <style>
+
+      iframe{
+
+          display: block;
+          margin:20px auto;
+      }
+
+      #seks{
+
+          text-align: center;
+          padding:20px;
+      }
+
+      #vtext{
+
+        text-align: center;
+        padding:20px;
+      }
+
+  </style>
+
+  </head>
+
+  <body>
+
+    <header style="text-align: center; font-size:xx-large;">YT rotator</header>
+
+    <div id="player"></div>
+
+    <script>
+        // 2. This code loads the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+  
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        var player;
+        function onYouTubeIframeAPIReady() {
+          player = new YT.Player('player', {
+            height: '390',
+            width: '640',
+            videoId: '9nniwr-7Em8', //9nniwr-7Em8'iIAvS137-7M'
+            playerVars: {
+              'autoplay': 1,
+              'start':vdata[0].start,
+              //'end':47,
+              //'playlist':'hYJ-Jx7fIeA,pzDBRNOeAow',
+              'playsinline': 1
+            },
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          });
+        }
+  
+        // 4. The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+          //event.target.playVideo();
+
+            let endsec = (vdata[0].hasOwnProperty('dur')) ? vdata[v].start+vdata[0].dur : vdata[0]?.end;
+
+            player.loadVideoByUrl({mediaContentUrl:vdata[0].url,
+                       startSeconds:vdata[0].start,
+                       endSeconds:endsec})
+
+            event.target.playVideo();
+
+            console.log(`playback ends: ${endsec}`)
+
+            if( vdata[0].hasOwnProperty('text') ){
+
+              document.getElementById('vtext').innerText = vdata[0].text
+            }
+
+          //startTimer();
+          //player.seekTo(vdata[v].start)
+        }
+  
+        // 5. The API calls this function when the player's state changes.
+        //    The function indicates that when playing a video (state=1),
+        //    the player should play for six seconds and then stop.
+        
+        var done = false;
+
+        function onPlayerStateChange(event) {
+
+          if (event.data == YT.PlayerState.PLAYING && !done) {
+
+            if( vdata[v].hasOwnProperty('dur') ){
+
+              setTimeout(stopVideo, (vdata[v].start+vdata[v].dur)*1000);
+             
+            }
+            
+            startTimer();
+
+            done = true;
+          }
+          else if(event.data == YT.PlayerState.ENDED){
+
+            console.log('state change: video stopped')
+            nextVideo()
+          }
+          else if(event.data == YT.PlayerState.CUED){
+
+            console.log('state change: video cued')
+
+            if( vdata[v].hasOwnProperty('start') ){
+
+              player.seekTo(vdata[v].start)
+            }
+            
+          }
+          
+        }
+
+        function stopVideo() {
+          player.stopVideo();
+          
+        }
+
+        function nextVideo(){
+
+            s=0
+
+            if( v < vdata.length-1){
+
+              v++
+            }
+            else{
+
+              v=0
+            }
+            
+            //player.nextVideo();
+
+            let endsec = (vdata[v].hasOwnProperty('dur')) ? vdata[v].start+vdata[v].dur : vdata[v]?.end;
+
+            player.loadVideoByUrl({mediaContentUrl:vdata[v].url,
+                       startSeconds:vdata[v].start,
+                       endSeconds:endsec})
+
+            console.log(`playback ends: ${endsec}`)
+
+            if( vdata[v].hasOwnProperty('text') ){
+
+              document.getElementById('vtext').innerText = vdata[v].text
+            }
+
+            //player.seekTo(vdata[v].start)
+
+            console.log(`seekto ${vdata[v].start}`)
+            
+        }
+
+        /* function rotate(){  // not in use
+
+            //document.getElementById('ytvid').setAttribute("src",vdata[v].url)
+
+            v++
+
+            if( v < vdata.length ){
+
+                setTimeout(()=>{ rotate(); s=0; },vdata[v].dur*1000)
+                console.log("next video...")
+            }
+
+            
+        } */
+      </script>
+
+    <div id="vtext"></div>
+
+    <div id="seks"></div>
+
+    <div style="text-align:center;">
+        <button onclick="nextVideo()">Next</button>
+        <button onclick="player.seekTo(vdata[v].start)">SeekTo</button>
+    </div>
+
+    <script>
+
+        /* let i=0
+
+        setInterval(()=>{ 
+
+            document.getElementById("anim").innerText = i
+            i++
+
+
+         },300) */
+
+         //rotate()
+
+         
+
+    </script>
+
+
+    
+
+    <!-- <div id="app"></div>
+    <script type="module" src="/main.js"></script> -->
+
+  </body>
+</html>
