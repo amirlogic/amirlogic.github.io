@@ -2,9 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>YT Rotator</title>
 
     <script>
 
@@ -70,17 +69,20 @@
   
         // 3. This function creates an <iframe> (and YouTube player)
         //    after the API code downloads.
+        
         var player;
+
         function onYouTubeIframeAPIReady() {
+
           player = new YT.Player('player', {
             height: '390',
             width: '640',
-            videoId: '9nniwr-7Em8', //9nniwr-7Em8'iIAvS137-7M'
+            //videoId: '9nniwr-7Em8', //9nniwr-7Em8'iIAvS137-7M'
             playerVars: {
               'autoplay': 1,
               'start':vdata[0].start,
               //'end':47,
-              //'playlist':'hYJ-Jx7fIeA,pzDBRNOeAow',
+              'playlist':'9nniwr-7Em8,b2814N7HmAQ,pzDBRNOeAow',
               'playsinline': 1
             },
             events: {
@@ -190,20 +192,7 @@
             
         }
 
-        /* function rotate(){  // not in use
-
-            //document.getElementById('ytvid').setAttribute("src",vdata[v].url)
-
-            v++
-
-            if( v < vdata.length ){
-
-                setTimeout(()=>{ rotate(); s=0; },vdata[v].dur*1000)
-                console.log("next video...")
-            }
-
-            
-        } */
+       
       </script>
 
     <div id="vtext"></div>
@@ -212,32 +201,37 @@
 
     <div style="text-align:center;">
         <button onclick="nextVideo()">Next</button>
-        <button onclick="player.seekTo(vdata[v].start)">SeekTo</button>
+        <!-- <button onclick="player.seekTo(vdata[v].start)">SeekTo</button> -->
     </div>
 
     <script>
 
-        /* let i=0
+      document.addEventListener('DOMContentLoaded',()=>{
 
-        setInterval(()=>{ 
+        setTimeout(()=>{
 
-            document.getElementById("anim").innerText = i
-            i++
+          if( navigator.getAutoplayPolicy("mediaelement") !== "allowed"){
 
+            alert("Autoplay is disabled!")
+          }
+          else{
 
-         },300) */
+            console.log(`Autoplay policy: ${navigator.getAutoplayPolicy("mediaelement")}`)
+          }
 
-         //rotate()
+          if( player?.getPlayerState() === -1 ){
 
-         
+            player?.playVideo()
+          }
+
+          console.log("trying to play video...")
+
+        },2000)
+
+      })
 
     </script>
 
-
-    
-
-    <!-- <div id="app"></div>
-    <script type="module" src="/main.js"></script> -->
 
   </body>
 </html>
