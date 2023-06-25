@@ -141,6 +141,10 @@
 
             //done = true;
           }
+          else if(event.data == YT.PlayerState.PAUSED){
+
+            clearInterval(tmr);
+          }
           else if(event.data == YT.PlayerState.ENDED){
 
             console.log('state change: video stopped')
