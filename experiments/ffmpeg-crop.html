@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FFMPEG Crop Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        #video-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+        }
+        .crop-rect {
+            position: absolute;
+            border: 2px dashed red;
+            background-color: rgba(255, 0, 0, 0.2);
+            cursor: move;
+            width: 200px; /* Default width */
+            height: 150px; /* Default height */
+        }
+        .resize-handle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: blue;
+            cursor: nwse-resize;
+        }
+        .resize-handle.br { /* Bottom-right */
+            right: -5px;
+            bottom: -5px;
+        }
+        #controls {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #output {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            width: 300px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>FFMPEG Crop Tool</h1>
+    <div id="controls">
+        <label for="video-path">Video Path:</label>
+        <input type="text" id="video-path" placeholder="Enter video URL or path" style="width: 300px;">
+        <button onclick="loadVideo()">Load Video</button>
+    </div>
+    <div id="video-container">
+        <video id="video" controls>
+            <source src="your-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="crop-rect" class="crop-rect">
+            <div class="resize-handle br"></div>
+        </div>
+    </div>
+    <div id="controls">
+        <button onclick="updateCropValues()">Update Crop Values</button>
+    </div>
+    <div id="output">
+        <strong>FFMPEG Crop Parameters:</strong>
+        <p id="crop-values">x: 0, y: 0, width: 200, height: 150</p>
+    </div>
+
+    <script>
+        const cropRect = document.getElementById("crop-rect");
+        const video = document.getElementById("video");
+        const cropValues = document.getElementById("crop-values");
+        const resizeHandle = document.querySelector(".resize-handle.br");
+
+        let isDragging = false;
+        let isResizing = false;
+        let startX, startY, startWidth, startHeight;
+
+        // Function to load the video from the input path
+        function loadVideo() {
+            const videoPath = document.getElementById("video-path").value;
+            if (videoPath) {
+                video.src = videoPath;
+                video.load();
+            } else {
+                alert("Please enter a valid video path.");
+            }
+        }
+
+        // Dragging functionality
+        cropRect.addEventListener("mousedown", (e) => {
+            if (e.target !== cropRect) return; // Ignore resizing handles
+            isDragging = true;
+            startX = e.clientX - cropRect.offsetLeft;
+            startY = e.clientY - cropRect.offsetTop;
+            document.addEventListener("mousemove", onDrag);
+            document.addEventListener("mouseup", stopDrag);
+        });
+
+        function onDrag(e) {
+            if (!isDragging) return;
+            const rect = video.getBoundingClientRect();
+            const left = Math.min(
+                Math.max(e.clientX - startX, 0),
+                rect.width - cropRect.offsetWidth
+            );
+            const top = Math.min(
+                Math.max(e.clientY - startY, 0),
+                rect.height - cropRect.offsetHeight
+            );
+            cropRect.style.left = left + "px";
+            cropRect.style.top = top + "px";
+        }
+
+        function stopDrag() {
+            isDragging = false;
+            document.removeEventListener("mousemove", onDrag);
+            document.removeEventListener("mouseup", stopDrag);
+            updateCropValues()
+        }
+
+        // Resizing functionality
+        resizeHandle.addEventListener("mousedown", (e) => {
+            isResizing = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            startWidth = cropRect.offsetWidth;
+            startHeight = cropRect.offsetHeight;
+            document.addEventListener("mousemove", onResize);
+            document.addEventListener("mouseup", stopResize);
+            e.stopPropagation(); // Prevent triggering drag
+        });
+
+        function onResize(e) {
+            if (!isResizing) return;
+            const rect = video.getBoundingClientRect();
+            const newWidth = Math.min(
+                Math.max(startWidth + (e.clientX - startX), 10),
+                rect.width - cropRect.offsetLeft
+            );
+            const newHeight = Math.min(
+                Math.max(startHeight + (e.clientY - startY), 10),
+                rect.height - cropRect.offsetTop
+            );
+            cropRect.style.width = newWidth + "px";
+            cropRect.style.height = newHeight + "px";
+        }
+
+        function stopResize() {
+            isResizing = false;
+            document.removeEventListener("mousemove", onResize);
+            document.removeEventListener("mouseup", stopResize);
+            updateCropValues()
+        }
+
+        // Update crop values
+        function updateCropValues() {
+            const rect = cropRect.getBoundingClientRect();
+            const videoRect = video.getBoundingClientRect();
+            const x = rect.left - videoRect.left;
+            const y = rect.top - videoRect.top;
+            const width = rect.width;
+            const height = rect.height;
+
+            cropValues.textContent = `x: ${Math.round(x)}, y: ${Math.round(y)}, width: ${Math.round(width)}, height: ${Math.round(height)}`;
+        }
+    </script>
+</body>
+</html>
