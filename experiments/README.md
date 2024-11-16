@@ -9,5 +9,7 @@
 | [ytrp.html](https://amirlogic.github.io/experiments/ytrp.html)                | YouTube video rotator using iFrame API player.loadPlaylist()     |
 | [llm-sim.html](https://amirlogic.github.io/experiments/llm-sim.html)          | LLM Animation                                                    |
 | [ffmpeg-crop.html](https://amirlogic.github.io/experiments/ffmpeg-crop.html)  | FFMPEG Crop Visualizer    |
+| [resize-observer.html](https://amirlogic.github.io/experiments/resize-observer.html)  | Resize Observer SandBox    |
+
 
 
