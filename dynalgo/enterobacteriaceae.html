@@ -1,0 +1,288 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Enterobacteriaceae Identification</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"><meta name="description" content="Common Enterobacteriaceae Laboratory Identification - Biochemical Tests"> <meta name="viewport" content="width=device-width, initial-scale=1.0"><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=blJQE47PzoGgj1PiTGdIScSsjm_R0Jio33jDet_ePuEywssi0li1rDVhDNRvN0OfFA-iIPsP3vC7NA6weAOKcSiMkmFOredXuLbA8xXhwM-zMNfOpn6iNvtqgu0cRozjCOdI9HSVVSMdiXAn-w2ufA" charset="UTF-8"></script><style>
+body{ color:#333333; font-size:90%; } @media only screen and (max-width: 600px) {
+  body { font-size:16px; }
+} #algohead{ color:#555555; padding:40px 4% 20px 4%; border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; }#dyncont{ min-height:700px; padding-top:50px; border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; } .inpbox{ padding:10px 5%; background-color:#f7faff; }.inptxt{ padding-bottom:10px; font-weight:600; color:#5485d3; text-align:right; } #xcmd{ padding:9px 15px; color:#FFFFFF; background-color:#bf4e4e; border:none; } .steptxt{ padding:20px 5%; background-color:#FEFEFE; } 
+</style>
+
+
+
+<script>
+
+let stepdata = {
+"add67941-c3c8-40fb-bcef-30527269d8cb":{"sid":"add67941-c3c8-40fb-bcef-30527269d8cb","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"0feac88e-f20d-4339-949f-e4d650e0abee","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T16:28:05.611Z"},
+"c3b727cb-31bb-498d-83d7-d51596302776":{"sid":"c3b727cb-31bb-498d-83d7-d51596302776","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"12ae1957-f9a0-4c05-b272-11c9ff29a4b5","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T16:28:12.614Z"},
+"2d38d43a-ed7b-4d78-a12a-b7117ae2def0":{"sid":"2d38d43a-ed7b-4d78-a12a-b7117ae2def0","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"1ac898ba-eba5-4493-9d78-20174dcfa436","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"neg\"","txt":"Gram-Negative Rods:<br />\n- <strong>Oxidase Negative: Enterobacteriaceae</strong>\n<br />- Oxidase Positive: Pseudomonas, Aeromonas, Vibrio.","tag":"Gram Negative","xdisp":null,"indata":["8e7fe89f-52a2-4db8-8e02-6e35eba2a15c"],"pos":"0","editime":"2025-07-31T14:49:48.441Z"},
+"b9863d1a-6479-4ac8-b27e-25e85040c2ec":{"sid":"b9863d1a-6479-4ac8-b27e-25e85040c2ec","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"1ac898ba-eba5-4493-9d78-20174dcfa436","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"pos\"","txt":"This is not an Enterobacteriaceae","tag":"Gram Positive (Stop)","xdisp":null,"indata":[],"pos":"1","editime":"2025-07-31T15:01:32.774Z"},
+"08836238-4993-4f8f-b7e8-cdadd7a6ec3a":{"sid":"08836238-4993-4f8f-b7e8-cdadd7a6ec3a","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"1ac898ba-eba5-4493-9d78-20174dcfa436","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"2","editime":"2025-07-31T15:02:48.475Z"},
+"35bf0531-7416-4052-9aed-d172f0fae3f1":{"sid":"35bf0531-7416-4052-9aed-d172f0fae3f1","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"1e7414b3-2baa-4cc2-aba8-56438a812d67","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T16:14:23.170Z"},
+"a7bdc6e0-7acf-4e7c-a4ca-ce2aebb0d632":{"sid":"a7bdc6e0-7acf-4e7c-a4ca-ce2aebb0d632","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"2d38d43a-ed7b-4d78-a12a-b7117ae2def0","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$1 == \"neg\"","txt":"Lactose Negative includes: Salmonella, Shigella, Proteus, Serratia, Yersinia","tag":"Lactose Negative","xdisp":null,"indata":["300261bb-0c15-4df4-8d0c-dd46257fee88","7a1e7d16-4352-426c-a3af-a6b8491bb9b9","f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"],"pos":"0","editime":"2025-07-31T15:01:32.875Z"},
+"439cbf6d-9ebe-4b26-bb2f-11239122daf0":{"sid":"439cbf6d-9ebe-4b26-bb2f-11239122daf0","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"2d38d43a-ed7b-4d78-a12a-b7117ae2def0","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$1 == \"pos\"","txt":"Lactose Positive includes: E. coli, Klebsiella, Enterobacter, Citrobacter","tag":"Lactose Positive","xdisp":null,"indata":["300261bb-0c15-4df4-8d0c-dd46257fee88","7a1e7d16-4352-426c-a3af-a6b8491bb9b9","f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"],"pos":"1","editime":"2025-07-31T15:33:22.209Z"},
+"69a880b4-6377-457d-9180-44937c820d33":{"sid":"69a880b4-6377-457d-9180-44937c820d33","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"2d38d43a-ed7b-4d78-a12a-b7117ae2def0","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"2","editime":"2025-07-31T15:34:15.595Z"},
+"e3814733-ad81-4ec2-ba5c-bb5fa0714bd0":{"sid":"e3814733-ad81-4ec2-ba5c-bb5fa0714bd0","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"344f1c9a-8968-4eda-9d31-784b5fb97cbe","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T17:52:37.120Z"},
+"5cad0d1e-5876-430d-beb6-71e8663ccb05":{"sid":"5cad0d1e-5876-430d-beb6-71e8663ccb05","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"38c72637-e7da-4d94-b0c7-fa648cc5de99","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T16:56:08.294Z"},
+"f4b5c7c0-7068-4e18-acf8-2e0158a8c152":{"sid":"f4b5c7c0-7068-4e18-acf8-2e0158a8c152","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"439cbf6d-9ebe-4b26-bb2f-11239122daf0","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"pos\" && $3 == \"neg\" && $4 == \"neg\"","txt":"Likely <strong>E. coli</strong>","tag":"E coli","xdisp":null,"indata":[],"pos":"0","editime":"2025-07-31T15:34:15.689Z"},
+"60316e13-a742-4e81-8dd2-76f66b1ccc35":{"sid":"60316e13-a742-4e81-8dd2-76f66b1ccc35","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"439cbf6d-9ebe-4b26-bb2f-11239122daf0","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"neg\" && $3 == \"pos\" && $4 == \"neg\"","txt":"Likely <strong>Klebsiella spp</strong>","tag":"Klebsiella","xdisp":null,"indata":[],"pos":"1","editime":"2025-07-31T16:20:19.397Z"},
+"0feac88e-f20d-4339-949f-e4d650e0abee":{"sid":"0feac88e-f20d-4339-949f-e4d650e0abee","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"439cbf6d-9ebe-4b26-bb2f-11239122daf0","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"neg\" && $3 == \"pos\" && $4 == \"pos\"","txt":"Likely <strong>Citrobacter</strong>","tag":"Citrobacter 1","xdisp":null,"indata":[],"pos":"2","editime":"2025-07-31T16:22:18.546Z"},
+"12ae1957-f9a0-4c05-b272-11c9ff29a4b5":{"sid":"12ae1957-f9a0-4c05-b272-11c9ff29a4b5","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"439cbf6d-9ebe-4b26-bb2f-11239122daf0","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"neg\" && $3 == \"neg\" && $4 == \"pos\"","txt":"Likely <strong>Citrobacter</strong>","tag":"Citrobacter 2","xdisp":null,"indata":[],"pos":"3","editime":"2025-07-31T16:28:05.518Z"},
+"6f6c5c43-f10a-4979-b075-8feb1685cb70":{"sid":"6f6c5c43-f10a-4979-b075-8feb1685cb70","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"439cbf6d-9ebe-4b26-bb2f-11239122daf0","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"neg\" && $3 == \"neg\" && $4 == \"neg\"","txt":"Likely <strong>Enterobacter spp</strong>","tag":"Enterobacter","xdisp":null,"indata":[],"pos":"4","editime":"2025-07-31T16:28:12.520Z"},
+"763d1b87-dad6-4395-bc90-1bb3d85fbee1":{"sid":"763d1b87-dad6-4395-bc90-1bb3d85fbee1","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"439cbf6d-9ebe-4b26-bb2f-11239122daf0","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"pos\" && $3 == \"pos\" && $4 == \"pos\"","txt":"Likely error, or not a common Enterobacteria","tag":"Error 1","xdisp":null,"indata":[],"pos":"5","editime":"2025-07-31T16:29:57.002Z"},
+"56d3571d-81b2-4bc8-9c3b-a8e656ce36c2":{"sid":"56d3571d-81b2-4bc8-9c3b-a8e656ce36c2","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"439cbf6d-9ebe-4b26-bb2f-11239122daf0","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"pos\" && $3 == \"pos\" && $4 == \"neg\"","txt":"Likely error, or not a common Enterobacteria","tag":"Error 2","xdisp":null,"indata":[],"pos":"6","editime":"2025-07-31T16:30:06.147Z"},
+"95fd86a0-7700-4d7a-b1fb-f46bd923ab6f":{"sid":"95fd86a0-7700-4d7a-b1fb-f46bd923ab6f","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"439cbf6d-9ebe-4b26-bb2f-11239122daf0","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"7","editime":"2025-07-31T16:45:07.805Z"},
+"d35edea3-a4e6-4022-8806-0c2fc8b7c021":{"sid":"d35edea3-a4e6-4022-8806-0c2fc8b7c021","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"56d3571d-81b2-4bc8-9c3b-a8e656ce36c2","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T16:45:07.908Z"},
+"d447509e-6a84-49b5-9b51-17158d5134cc":{"sid":"d447509e-6a84-49b5-9b51-17158d5134cc","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"60316e13-a742-4e81-8dd2-76f66b1ccc35","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T16:22:18.640Z"},
+"897369bb-a9ce-42b1-8062-173335f2d6cf":{"sid":"897369bb-a9ce-42b1-8062-173335f2d6cf","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"6f6c5c43-f10a-4979-b075-8feb1685cb70","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T16:29:57.097Z"},
+"932cc143-1515-48d7-abe4-90d5980e8336":{"sid":"932cc143-1515-48d7-abe4-90d5980e8336","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"763d1b87-dad6-4395-bc90-1bb3d85fbee1","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T16:30:06.248Z"},
+"ee9f7a53-2a50-418c-95ee-bd09c02797a3":{"sid":"ee9f7a53-2a50-418c-95ee-bd09c02797a3","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"a7bdc6e0-7acf-4e7c-a4ca-ce2aebb0d632","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"neg\" && $3 == \"pos\" && $4 == \"pos\"","txt":"Likely <strong>Proteus spp</strong>","tag":"Proteus spp","xdisp":null,"indata":[],"pos":"0","editime":"2025-07-31T15:33:22.309Z"},
+"dbbcfa11-a3bc-40d2-9944-b9d2fc872784":{"sid":"dbbcfa11-a3bc-40d2-9944-b9d2fc872784","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"a7bdc6e0-7acf-4e7c-a4ca-ce2aebb0d632","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"pos\" && $3 == \"pos\" && $4 == \"pos\"","txt":"Likely <strong>Proteus vulgaris</strong>","tag":"Proteus vulgaris","xdisp":null,"indata":[],"pos":"1","editime":"2025-07-31T16:12:09.266Z"},
+"f06be772-e698-404e-b2ff-e43ca8fa9523":{"sid":"f06be772-e698-404e-b2ff-e43ca8fa9523","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"a7bdc6e0-7acf-4e7c-a4ca-ce2aebb0d632","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"neg\" && $3 == \"neg\" && $4 == \"pos\"","txt":"Likely <strong>Salmonella</strong>\n\n<br />\nNext: Antigen identification","tag":"Salmonella","xdisp":null,"indata":[],"pos":"2","editime":"2025-07-31T16:12:31.584Z"},
+"1e7414b3-2baa-4cc2-aba8-56438a812d67":{"sid":"1e7414b3-2baa-4cc2-aba8-56438a812d67","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"a7bdc6e0-7acf-4e7c-a4ca-ce2aebb0d632","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"neg\" && $3 == \"neg\" && $4 == \"neg\"","txt":"Likely <strong>Shigella</strong> or Yersinia, or Enterobacter\n<br />\nMore tests:<br />\nShigella is VP NEG<br />\nEnterobacter is VP POS<br />\n","tag":"Shigella","xdisp":null,"indata":[],"pos":"3","editime":"2025-07-31T16:12:52.988Z"},
+"38c72637-e7da-4d94-b0c7-fa648cc5de99":{"sid":"38c72637-e7da-4d94-b0c7-fa648cc5de99","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"a7bdc6e0-7acf-4e7c-a4ca-ce2aebb0d632","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"neg\" && $3 == \"pos\" && $4 == \"neg\"","txt":"Likely <strong>Serratia</strong>","tag":"Serratia","xdisp":null,"indata":[],"pos":"4","editime":"2025-07-31T16:14:23.073Z"},
+"ce1d0e9d-3827-4e06-8dce-166e8100dea3":{"sid":"ce1d0e9d-3827-4e06-8dce-166e8100dea3","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"a7bdc6e0-7acf-4e7c-a4ca-ce2aebb0d632","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"pos\" && $3 == \"neg\" && $4 == \"neg\"","txt":"Likely <strong>Shigella</strong>","tag":"Shigella 2","xdisp":null,"indata":[],"pos":"5","editime":"2025-07-31T16:56:08.194Z"},
+"344f1c9a-8968-4eda-9d31-784b5fb97cbe":{"sid":"344f1c9a-8968-4eda-9d31-784b5fb97cbe","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"a7bdc6e0-7acf-4e7c-a4ca-ce2aebb0d632","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"pos\" && $3 == \"neg\" && $4 == \"pos\"","txt":"Likely error, or uncommon enterobacteria","tag":"Error 1","xdisp":null,"indata":[],"pos":"6","editime":"2025-07-31T16:58:50.548Z"},
+"fbcc119b-2d5e-458f-9acd-0e6cf33818e0":{"sid":"fbcc119b-2d5e-458f-9acd-0e6cf33818e0","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"a7bdc6e0-7acf-4e7c-a4ca-ce2aebb0d632","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"7","editime":"2025-07-31T17:52:37.020Z"},
+"6f1203ae-901f-4d39-a8ec-39ff8239e74c":{"sid":"6f1203ae-901f-4d39-a8ec-39ff8239e74c","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"b9863d1a-6479-4ac8-b27e-25e85040c2ec","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T15:02:48.569Z"},
+"983b80ef-2400-49bb-93d2-5660476a9dbd":{"sid":"983b80ef-2400-49bb-93d2-5660476a9dbd","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"ce1d0e9d-3827-4e06-8dce-166e8100dea3","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T16:58:50.642Z"},
+"6600b4d3-c27f-4692-97a6-e41b2414dc09":{"sid":"6600b4d3-c27f-4692-97a6-e41b2414dc09","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"dbbcfa11-a3bc-40d2-9944-b9d2fc872784","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T16:12:31.679Z"},
+"96885089-8534-4e19-8884-4f07a360f33a":{"sid":"96885089-8534-4e19-8884-4f07a360f33a","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"ee9f7a53-2a50-418c-95ee-bd09c02797a3","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T16:12:09.366Z"},
+"9c7385c1-0e72-449a-be94-51aeee919523":{"sid":"9c7385c1-0e72-449a-be94-51aeee919523","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"f06be772-e698-404e-b2ff-e43ca8fa9523","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T16:12:53.082Z"},
+"dd76e904-abf1-4d4e-83c8-71c3dd9bdaf4":{"sid":"dd76e904-abf1-4d4e-83c8-71c3dd9bdaf4","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":"f4b5c7c0-7068-4e18-acf8-2e0158a8c152","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2025-07-31T16:20:19.498Z"},
+"1ac898ba-eba5-4493-9d78-20174dcfa436":{"sid":"1ac898ba-eba5-4493-9d78-20174dcfa436","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","previd":null,"userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"origin","cdts":"","txt":"Let's Start with the Gram","tag":"Origin","xdisp":"","indata":["8fb1bfb3-7155-4ba2-9911-864a92b628ce"],"pos":"0","editime":"2025-07-31T14:49:48.130Z"}}
+
+let inputdata = {
+"8fb1bfb3-7155-4ba2-9911-864a92b628ce":{"nid":"8fb1bfb3-7155-4ba2-9911-864a92b628ce","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"Gram Stain","inopts":[["neg","Gram Negative"],["pos","Gram Positive"]],"pos":"0","editime":"2025-07-31T14:49:48.337Z"},
+"8e7fe89f-52a2-4db8-8e02-6e35eba2a15c":{"nid":"8e7fe89f-52a2-4db8-8e02-6e35eba2a15c","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"Lactose fermentation","inopts":[["neg","Negative"],["pos","Positive"]],"pos":"1","editime":"2025-07-31T14:50:08.263Z"},
+"300261bb-0c15-4df4-8d0c-dd46257fee88":{"nid":"300261bb-0c15-4df4-8d0c-dd46257fee88","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"Indole","inopts":[["neg","Negative"],["pos","Positive"]],"pos":"2","editime":"2025-07-31T15:22:31.339Z"},
+"7a1e7d16-4352-426c-a3af-a6b8491bb9b9":{"nid":"7a1e7d16-4352-426c-a3af-a6b8491bb9b9","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"Urease","inopts":[["neg","Negative"],["pos","Positive"]],"pos":"3","editime":"2025-07-31T15:39:36.052Z"},
+"f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee":{"nid":"f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"H2S","inopts":[["neg","Negative"],["pos","Positive"]],"pos":"4","editime":"2025-07-31T15:40:00.280Z"},
+"5a835c5c-4c72-4d38-8314-901e53481a22":{"nid":"5a835c5c-4c72-4d38-8314-901e53481a22","algo":"2090d20b-f46b-4e94-93ef-db73985c8849","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"stem","intxt":"null","inopts":[],"pos":"5","editime":"2025-07-31T15:40:11.514Z"}}
+
+let stepstack = [ ["1ac898ba-eba5-4493-9d78-20174dcfa436",true] ]
+
+let inputvalue = {"8fb1bfb3-7155-4ba2-9911-864a92b628ce":[false,""],
+"8e7fe89f-52a2-4db8-8e02-6e35eba2a15c":[false,""],
+"300261bb-0c15-4df4-8d0c-dd46257fee88":[false,""],
+"7a1e7d16-4352-426c-a3af-a6b8491bb9b9":[false,""],
+"f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee":[false,""],
+"5a835c5c-4c72-4d38-8314-901e53481a22":[false,""]
+}
+
+let stepInput = (inid,input)=>{ 
+
+	inputvalue[inid][1] = input
+	inputvalue[inid][0] = true
+}
+
+
+let htrefresh = ()=>{ 
+
+	let dynHtml = ""
+	for( let s=0; s<stepstack.length; s++ )
+	{
+	dynHtml += "<div style=\"background-color:#FEFEFE;\"><div class=\"steptxt\">"
+	+ stepdata[ stepstack[s][0] ].txt + "</div>"
+	dynHtml += stepdata[ stepstack[s][0] ].indata.map( (inrr)=>{
+	if( inputdata[ inrr ].intype == "select" ){
+	return "<div class=\"inpbox row\"><div class=\"inptxt col\">" 
+	+ inputdata[ inrr ].intxt + "</div><div class=\"inpcont col\"><select onchange=\"stepInput('"+inrr+"',this.value)\">" 
+	+ "<option value=\"\">---</option>" 
+	+ inputdata[ inrr ].inopts.map( (optrr)=>{
+	if( optrr[0] == inputvalue[ inrr ][1] ){
+	return "<option value=\"" + optrr[0] 
+	+ "\" selected=\"selected\">" + optrr[1] + "</option>"
+	}
+	else{
+	return "<option value=\"" + optrr[0] + "\">" + optrr[1] + "</option>"
+	}
+	} ).join('') +  "</select></div></div>"
+	}
+	else if( inputdata[ inrr ].intype == "number" ){
+	return "<div style=\"padding:10px;\">" + inputdata[ inrr ].intxt + " <input type=\"number\" onchange=\"stepInput('"+inrr+"',this.value)\" />"
+	+ "</div>"
+	}
+	else{
+	return "<div>ERROR</div>"
+	}
+	}).join('')
+	dynHtml += "</div>"
+	if( stepstack[s][1] == true ){
+	dynHtml += "<div style=\"padding:10px; margin-top:30px; margin-bottom:100px; \"><input id=\"xcmd\" type=\"button\" class=\"btn btn-primary\" value=\"Next\" onclick=\"extend()\" /> <a href=\"#\" style=\"margin-left:30px;\" onclick=\"document.location.reload()\" />Reset</a></div>"
+	}
+	}
+	document.getElementById('dyncont').innerHTML = dynHtml
+}
+
+
+let extend = ()=>{ 
+
+	let openstep = true
+	let doninput
+	let dologic
+	while( openstep == true ){
+	openstep = false
+	doninput = true
+	if( stepstack[ stepstack.length-1 ][1] == true ){
+	if( stepdata[ stepstack[ stepstack.length-1 ][0] ].indata.length == 0 ){
+	dologic = true
+	}
+	else{
+	for( n=0; n<stepdata[ stepstack[ stepstack.length-1 ][0] ].indata.length; n++ )
+	{
+	if( inputvalue[ stepdata[ stepstack[ stepstack.length-1 ][0] ].indata[n] ][0] == false ){
+	doninput = false
+	}
+	}
+	if( doninput == true ){
+	dologic = true
+	}
+	else{
+	dologic = false
+	}
+	}
+	if( dologic == true ){
+	if( stepstack[ stepstack.length-1 ][0] == "0feac88e-f20d-4339-949f-e4d650e0abee" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "12ae1957-f9a0-4c05-b272-11c9ff29a4b5" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "1ac898ba-eba5-4493-9d78-20174dcfa436" ){
+	if(inputvalue["8fb1bfb3-7155-4ba2-9911-864a92b628ce"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "2d38d43a-ed7b-4d78-a12a-b7117ae2def0",true ] )
+	openstep = true
+	}
+	else if(inputvalue["8fb1bfb3-7155-4ba2-9911-864a92b628ce"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "b9863d1a-6479-4ac8-b27e-25e85040c2ec",true ] )
+	openstep = true
+	}
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "1e7414b3-2baa-4cc2-aba8-56438a812d67" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "2d38d43a-ed7b-4d78-a12a-b7117ae2def0" ){
+	if(inputvalue["8e7fe89f-52a2-4db8-8e02-6e35eba2a15c"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "a7bdc6e0-7acf-4e7c-a4ca-ce2aebb0d632",true ] )
+	openstep = true
+	}
+	else if(inputvalue["8e7fe89f-52a2-4db8-8e02-6e35eba2a15c"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "439cbf6d-9ebe-4b26-bb2f-11239122daf0",true ] )
+	openstep = true
+	}
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "344f1c9a-8968-4eda-9d31-784b5fb97cbe" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "38c72637-e7da-4d94-b0c7-fa648cc5de99" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "439cbf6d-9ebe-4b26-bb2f-11239122daf0" ){
+	if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "pos" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "neg" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "f4b5c7c0-7068-4e18-acf8-2e0158a8c152",true ] )
+	openstep = true
+	}
+	else if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "neg" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "pos" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "60316e13-a742-4e81-8dd2-76f66b1ccc35",true ] )
+	openstep = true
+	}
+	else if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "neg" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "pos" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "0feac88e-f20d-4339-949f-e4d650e0abee",true ] )
+	openstep = true
+	}
+	else if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "neg" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "neg" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "12ae1957-f9a0-4c05-b272-11c9ff29a4b5",true ] )
+	openstep = true
+	}
+	else if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "neg" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "neg" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "6f6c5c43-f10a-4979-b075-8feb1685cb70",true ] )
+	openstep = true
+	}
+	else if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "pos" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "pos" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "763d1b87-dad6-4395-bc90-1bb3d85fbee1",true ] )
+	openstep = true
+	}
+	else if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "pos" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "pos" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "56d3571d-81b2-4bc8-9c3b-a8e656ce36c2",true ] )
+	openstep = true
+	}
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "56d3571d-81b2-4bc8-9c3b-a8e656ce36c2" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "60316e13-a742-4e81-8dd2-76f66b1ccc35" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "6f6c5c43-f10a-4979-b075-8feb1685cb70" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "763d1b87-dad6-4395-bc90-1bb3d85fbee1" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "a7bdc6e0-7acf-4e7c-a4ca-ce2aebb0d632" ){
+	if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "neg" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "pos" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "ee9f7a53-2a50-418c-95ee-bd09c02797a3",true ] )
+	openstep = true
+	}
+	else if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "pos" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "pos" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "dbbcfa11-a3bc-40d2-9944-b9d2fc872784",true ] )
+	openstep = true
+	}
+	else if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "neg" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "neg" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "f06be772-e698-404e-b2ff-e43ca8fa9523",true ] )
+	openstep = true
+	}
+	else if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "neg" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "neg" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "1e7414b3-2baa-4cc2-aba8-56438a812d67",true ] )
+	openstep = true
+	}
+	else if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "neg" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "pos" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "38c72637-e7da-4d94-b0c7-fa648cc5de99",true ] )
+	openstep = true
+	}
+	else if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "pos" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "neg" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "neg"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "ce1d0e9d-3827-4e06-8dce-166e8100dea3",true ] )
+	openstep = true
+	}
+	else if(inputvalue["300261bb-0c15-4df4-8d0c-dd46257fee88"][1] == "pos" && inputvalue["7a1e7d16-4352-426c-a3af-a6b8491bb9b9"][1] == "neg" && inputvalue["f8a02f6b-699e-41e8-8ec2-dcbcb7e1bcee"][1] == "pos"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "344f1c9a-8968-4eda-9d31-784b5fb97cbe",true ] )
+	openstep = true
+	}
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "b9863d1a-6479-4ac8-b27e-25e85040c2ec" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "ce1d0e9d-3827-4e06-8dce-166e8100dea3" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "dbbcfa11-a3bc-40d2-9944-b9d2fc872784" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "ee9f7a53-2a50-418c-95ee-bd09c02797a3" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "f06be772-e698-404e-b2ff-e43ca8fa9523" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "f4b5c7c0-7068-4e18-acf8-2e0158a8c152" ){
+	}
+	}
+	}
+	}
+	htrefresh()
+}
+
+
+let initLoad = ()=>{ 
+
+	htrefresh()
+}
+
+
+</script></head>
+<body onload="initLoad()">
+	<div id="algohead" class="container"><h5>Enterobacteriaceae Identification</h5></div><div id="dyncont" class="container">Loading...</div>
+	<noscript>Error: You must activate Javascript to use this website</noscript>
+</body></html>
