@@ -1,0 +1,154 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Git Reset</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"> <meta name="description" content="Guide to undo commits"> <meta name="viewport" content="width=device-width, initial-scale=1.0"><script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=QY7MM-U6YvZdkfIvk_71yEUnQh4JOnpXyhd3TaFtsqfpriSamCZ4SubGs85OQmJel2MWcgK8dgpV9hQlwdAidkmSOkv2zgGQ0rKAZU0IGmssSG2-WM-tBmkDeiWagKYxFrfzDu1_J3Hc-o0sgYDs0A" charset="UTF-8"></script><style>
+body{ color:#333333; font-size:90%; } @media only screen and (max-width: 600px) {
+  body { font-size:16px; }
+} #algohead{ color:#555555; padding:40px 4% 20px 4%; border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; }#dyncont{ min-height:700px; padding-top:50px; border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; } .inpbox{ padding:10px 5%; background-color:#f7faff; }.inptxt{ padding-bottom:10px; font-weight:600; color:#5485d3; text-align:right; } #xcmd{ padding:9px 15px; color:#FFFFFF; background-color:#bf4e4e; border:none; } .steptxt{ padding:20px 5%; background-color:#FEFEFE; } 
+</style>
+
+
+
+<script>
+
+let stepdata = {
+"2d8990f1-5408-484b-a963-62cdcb43e59d":{"sid":"2d8990f1-5408-484b-a963-62cdcb43e59d","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","previd":"11d4c32b-28a2-4230-9ade-0841fd9688f5","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2026-02-05T16:15:22.357Z"},
+"134a3226-43f1-4e7b-9900-a02205941236":{"sid":"134a3226-43f1-4e7b-9900-a02205941236","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","previd":"1250dca0-7a53-4391-91d6-4122ab1f0089","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2026-02-05T16:36:44.926Z"},
+"d78552a0-ed31-4ebd-8d3e-d84e021e4c6d":{"sid":"d78552a0-ed31-4ebd-8d3e-d84e021e4c6d","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","previd":"a71ae308-a4b4-465d-9c7f-c84a746f8b0b","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"keep\" && $1 == \"notfirst\" && $2 == \"local\"","txt":"<code>git reset --soft HEAD~1</code>\n\n<p>Or replace 1 with the number of commits to undo</p>","tag":"Keep changes (not first)","xdisp":null,"indata":[],"pos":"0","editime":"2026-02-05T15:59:37.967Z"},
+"11d4c32b-28a2-4230-9ade-0841fd9688f5":{"sid":"11d4c32b-28a2-4230-9ade-0841fd9688f5","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","previd":"a71ae308-a4b4-465d-9c7f-c84a746f8b0b","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"discard\" && $1 == \"notfirst\" && $2 == \"local\"","txt":"<code>git reset --hard HEAD~1</code>\n\n<p>Completely remove the changes.</p>","tag":"Discard changes","xdisp":null,"indata":[],"pos":"1","editime":"2026-02-05T16:12:23.036Z"},
+"f6074f77-32ea-4a41-a68f-fcce20e4159e":{"sid":"f6074f77-32ea-4a41-a68f-fcce20e4159e","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","previd":"a71ae308-a4b4-465d-9c7f-c84a746f8b0b","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$0 == \"keep\" && $1 == \"first\" && $2 == \"local\"","txt":"<code>git reset --soft --root</code>\n\n<p>If your Git version does not support <pre>--root</pre>:</p>\n\n<code>git update-ref -d HEAD</code>\n\n<p></p>","tag":"Keep changes (first)","xdisp":null,"indata":[],"pos":"2","editime":"2026-02-05T16:15:22.356Z"},
+"1250dca0-7a53-4391-91d6-4122ab1f0089":{"sid":"1250dca0-7a53-4391-91d6-4122ab1f0089","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","previd":"a71ae308-a4b4-465d-9c7f-c84a746f8b0b","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"if","cdts":"$2 == \"remote\"","txt":"<p>Pushed, shared repo → <code>git revert HEAD</code></p>\n\n<p>Pushed, private and safe → <code>git reset --hard HEAD~1 && git push --force</code></p>","tag":"Already pushed","xdisp":null,"indata":[],"pos":"3","editime":"2026-02-05T16:24:27.831Z"},
+"3b071747-24f1-4a67-bf00-0497d7acb899":{"sid":"3b071747-24f1-4a67-bf00-0497d7acb899","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","previd":"a71ae308-a4b4-465d-9c7f-c84a746f8b0b","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"4","editime":"2026-02-05T16:36:44.924Z"},
+"7303a3c2-c662-4aa1-bb76-00a70270bd85":{"sid":"7303a3c2-c662-4aa1-bb76-00a70270bd85","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","previd":"d78552a0-ed31-4ebd-8d3e-d84e021e4c6d","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2026-02-05T16:12:23.037Z"},
+"8547b2da-00f3-44c4-80d1-d97c7e4e61ae":{"sid":"8547b2da-00f3-44c4-80d1-d97c7e4e61ae","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","previd":"f6074f77-32ea-4a41-a68f-fcce20e4159e","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"stem","cdts":"null","txt":"null","tag":"Add step","xdisp":null,"indata":[null],"pos":"0","editime":"2026-02-05T16:24:27.832Z"},
+"a71ae308-a4b4-465d-9c7f-c84a746f8b0b":{"sid":"a71ae308-a4b4-465d-9c7f-c84a746f8b0b","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","previd":null,"userid":"dca808a0-ccca-11e8-95a5-191c20c46254","stype":"origin","cdts":"","txt":"<p>You want to undo commits, first let me know:</p>\n\n<p>- Do you keep changes?</p>\n\n<p>- Is it the first commit?</p>\n\n<p>- Pushed or not?</p>","tag":"Origin","xdisp":"","indata":["66b09521-487b-4289-a8ea-54d6958b27a7","8844e6d8-12cd-443c-a12a-b0636aa12e25","d53d46d0-1bde-434a-af56-04cc7d05b968"],"pos":"0","editime":"2026-02-05T15:59:37.885Z"}}
+
+let inputdata = {
+"66b09521-487b-4289-a8ea-54d6958b27a7":{"nid":"66b09521-487b-4289-a8ea-54d6958b27a7","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"Keep changes?","inopts":[["keep","Keep changes"],["discard","Discard changes"]],"pos":"0","editime":"2026-02-05T15:59:37.955Z"},
+"8844e6d8-12cd-443c-a12a-b0636aa12e25":{"nid":"8844e6d8-12cd-443c-a12a-b0636aa12e25","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"First commit?","inopts":[["notfirst","Not first"],["first","First commit"]],"pos":"1","editime":"2026-02-05T16:04:59.527Z"},
+"d53d46d0-1bde-434a-af56-04cc7d05b968":{"nid":"d53d46d0-1bde-434a-af56-04cc7d05b968","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"select","intxt":"Pushed?","inopts":[["local","Not pushed"],["remote","Pushed already"]],"pos":"2","editime":"2026-02-05T16:07:19.391Z"},
+"f8382d80-ce24-4235-ac89-0e4274f232a9":{"nid":"f8382d80-ce24-4235-ac89-0e4274f232a9","algo":"7b343052-40d4-4418-a33f-7d22bdff4732","userid":"dca808a0-ccca-11e8-95a5-191c20c46254","intype":"stem","intxt":"null","inopts":[],"pos":"3","editime":"2026-02-05T16:35:56.427Z"}}
+
+let stepstack = [ ["a71ae308-a4b4-465d-9c7f-c84a746f8b0b",true] ]
+
+let inputvalue = {"66b09521-487b-4289-a8ea-54d6958b27a7":[false,""],
+"8844e6d8-12cd-443c-a12a-b0636aa12e25":[false,""],
+"d53d46d0-1bde-434a-af56-04cc7d05b968":[false,""],
+"f8382d80-ce24-4235-ac89-0e4274f232a9":[false,""]
+}
+
+let stepInput = (inid,input)=>{ 
+
+	inputvalue[inid][1] = input
+	inputvalue[inid][0] = true
+}
+
+
+let htrefresh = ()=>{ 
+
+	let dynHtml = ""
+	for( s=0; s<stepstack.length; s++ )
+	{
+	dynHtml += "<div style=\"background-color:#FEFEFE;\"><div class=\"steptxt\">"
+	+ stepdata[ stepstack[s][0] ].txt + "</div>"
+	dynHtml += stepdata[ stepstack[s][0] ].indata.map( (inrr)=>{
+	if( inputdata[ inrr ].intype == "select" ){
+	return "<div class=\"inpbox row\"><div class=\"inptxt col\">" 
+	+ inputdata[ inrr ].intxt + "</div><div class=\"inpcont col\"><select onchange=\"stepInput('"+inrr+"',this.value)\">" 
+	+ "<option value=\"\">---</option>" 
+	+ inputdata[ inrr ].inopts.map( (optrr)=>{
+	if( optrr[0] == inputvalue[ inrr ][1] ){
+	return "<option value=\"" + optrr[0] 
+	+ "\" selected=\"selected\">" + optrr[1] + "</option>"
+	}
+	else{
+	return "<option value=\"" + optrr[0] + "\">" + optrr[1] + "</option>"
+	}
+	} ).join('') +  "</select></div></div>"
+	}
+	else if( inputdata[ inrr ].intype == "number" ){
+	return "<div style=\"padding:10px;\">" + inputdata[ inrr ].intxt + " <input type=\"number\" onchange=\"stepInput('"+inrr+"',this.value)\" />"
+	+ "</div>"
+	}
+	else{
+	return "<div>ERROR</div>"
+	}
+	}).join('')
+	dynHtml += "</div>"
+	if( stepstack[s][1] == true ){
+	dynHtml += "<div style=\"padding:10px; margin-top:30px; margin-bottom:100px; \"><input id=\"xcmd\" type=\"button\" class=\"btn btn-primary\" value=\"Next\" onclick=\"extend()\" /> <a href=\"#\" style=\"margin-left:30px;\" onclick=\"document.location.reload()\" />Reset</a></div>"
+	}
+	}
+	document.getElementById('dyncont').innerHTML = dynHtml
+}
+
+
+let extend = ()=>{ 
+
+	let openstep = true
+	let doninput
+	let dologic
+	while( openstep == true ){
+	openstep = false
+	doninput = true
+	if( stepstack[ stepstack.length-1 ][1] == true ){
+	if( stepdata[ stepstack[ stepstack.length-1 ][0] ].indata.length == 0 ){
+	dologic = true
+	}
+	else{
+	for( n=0; n<stepdata[ stepstack[ stepstack.length-1 ][0] ].indata.length; n++ )
+	{
+	if( inputvalue[ stepdata[ stepstack[ stepstack.length-1 ][0] ].indata[n] ][0] == false ){
+	doninput = false
+	}
+	}
+	if( doninput == true ){
+	dologic = true
+	}
+	else{
+	dologic = false
+	}
+	}
+	if( dologic == true ){
+	if( stepstack[ stepstack.length-1 ][0] == "11d4c32b-28a2-4230-9ade-0841fd9688f5" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "1250dca0-7a53-4391-91d6-4122ab1f0089" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "a71ae308-a4b4-465d-9c7f-c84a746f8b0b" ){
+	if(inputvalue["66b09521-487b-4289-a8ea-54d6958b27a7"][1] == "keep" && inputvalue["8844e6d8-12cd-443c-a12a-b0636aa12e25"][1] == "notfirst" && inputvalue["d53d46d0-1bde-434a-af56-04cc7d05b968"][1] == "local"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "d78552a0-ed31-4ebd-8d3e-d84e021e4c6d",true ] )
+	openstep = true
+	}
+	else if(inputvalue["66b09521-487b-4289-a8ea-54d6958b27a7"][1] == "discard" && inputvalue["8844e6d8-12cd-443c-a12a-b0636aa12e25"][1] == "notfirst" && inputvalue["d53d46d0-1bde-434a-af56-04cc7d05b968"][1] == "local"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "11d4c32b-28a2-4230-9ade-0841fd9688f5",true ] )
+	openstep = true
+	}
+	else if(inputvalue["66b09521-487b-4289-a8ea-54d6958b27a7"][1] == "keep" && inputvalue["8844e6d8-12cd-443c-a12a-b0636aa12e25"][1] == "first" && inputvalue["d53d46d0-1bde-434a-af56-04cc7d05b968"][1] == "local"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "f6074f77-32ea-4a41-a68f-fcce20e4159e",true ] )
+	openstep = true
+	}
+	else if(inputvalue["d53d46d0-1bde-434a-af56-04cc7d05b968"][1] == "remote"){
+	stepstack[ stepstack.length-1 ][1] = false
+	stepstack.push( [ "1250dca0-7a53-4391-91d6-4122ab1f0089",true ] )
+	openstep = true
+	}
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "d78552a0-ed31-4ebd-8d3e-d84e021e4c6d" ){
+	}
+	else if( stepstack[ stepstack.length-1 ][0] == "f6074f77-32ea-4a41-a68f-fcce20e4159e" ){
+	}
+	}
+	}
+	}
+	htrefresh()
+}
+
+
+let initLoad = ()=>{ 
+
+	htrefresh()
+}
+
+
+</script></head><body onload="initLoad()"><div id="algohead" class="container"><h5>Git Reset</h5></div><div id="dyncont" class="container">Loading...</div><noscript>Error: You must activate Javascript to use this website</noscript></body></html>
