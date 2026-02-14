@@ -1,0 +1,237 @@
+
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<title>Color Merge Algorithm</title>
+<link rel="stylesheet" type="text/css"
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{ color:#333333; font-size:90%; }
+#algohead{ padding:40px 4% 20px 4%; border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; }
+#dyncont{ min-height:700px; padding-top:50px; border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; }
+.inpbox{ padding:10px 5%; background-color:#f7faff; }
+.inptxt{ padding-bottom:10px; font-weight:600; color:#5485d3; text-align:right; }
+#xcmd{ padding:9px 15px; color:#FFFFFF; background-color:#bf4e4e; border:none; }
+.steptxt{ padding:20px 5%; background-color:#FEFEFE; }
+</style>
+
+<script>
+
+/* ---------------- STEP DATA ---------------- */
+
+let stepdata = {
+"origin-color":{
+  "sid":"origin-color",
+  "stype":"origin",
+  "txt":`<p>Select two colors to mix.</p><p>Click Next to see the result.</p>`,
+  "indata":["color1","color2"]
+},
+
+"result-purple":{
+  "sid":"result-purple",
+  "stype":"if",
+  "txt":`<h3 style='color:purple'>Purple</h3><p>Red + Blue = Purple</p>`,
+  "indata":[]
+},
+"result-purple-rev":{
+  "sid":"result-purple-rev",
+  "stype":"if",
+  "txt":`<h3 style='color:purple'>Purple</h3><p>Blue + Red = Purple</p>`,
+  "indata":[]
+},
+"result-orange":{
+  "sid":"result-orange",
+  "stype":"if",
+  "txt":`<h3 style='color:orange'>Orange</h3><p>Red + Yellow = Orange</p>`,
+  "indata":[]
+},
+"result-orange-rev":{
+  "sid":"result-orange-rev",
+  "stype":"if",
+  "txt":`<h3 style='color:orange'>Orange</h3><p>Yellow + Red = Orange</p>`,
+  "indata":[]
+},
+"result-green":{
+  "sid":"result-green",
+  "stype":"if",
+  "txt":`<h3 style='color:green'>Green</h3><p>Blue + Yellow = Green</p>`,
+  "indata":[]
+},
+"result-green-rev":{
+  "sid":"result-green-rev",
+  "stype":"if",
+  "txt":`<h3 style='color:green'>Green</h3><p>Yellow + Blue = Green</p>`,
+  "indata":[]
+},
+"result-red":{
+  "sid":"result-red",
+  "stype":"if",
+  "txt":`<h3 style='color:red'>Red</h3><p>Red + Red = Red</p>`,
+  "indata":[]
+},
+"result-blue":{
+  "sid":"result-blue",
+  "stype":"if",
+  "txt":`<h3 style='color:blue'>Blue</h3><p>Blue + Blue = Blue</p>`,
+  "indata":[]
+},
+"result-yellow":{
+  "sid":"result-yellow",
+  "stype":"if",
+  "txt":`<h3 style='color:gold'>Yellow</h3><p>Yellow + Yellow = Yellow</p>`,
+  "indata":[]
+}
+}
+
+/* ---------------- INPUT DATA ---------------- */
+
+let inputdata = {
+
+"color1":{
+  "nid":"color1",
+  "intype":"select",
+  "intxt":"Color 1",
+  "inopts":[["red","Red"],["blue","Blue"],["yellow","Yellow"]]
+},
+"color2":{
+  "nid":"color2",
+  "intype":"select",
+  "intxt":"Color 2",
+  "inopts":[["red","Red"],["blue","Blue"],["yellow","Yellow"]]
+}
+}
+
+/* ---------------- ENGINE STATE ---------------- */
+
+let stepstack = [ ["origin-color",true] ]
+
+let inputvalue = {
+"color1":[false,""],"color2":[false,""]
+}
+
+let stepInput = (inid,input)=>{ 
+  inputvalue[inid][1] = input
+  inputvalue[inid][0] = true
+}
+
+/* ---------------- RENDER ---------------- */
+
+let htrefresh = ()=>{ 
+
+  let dynHtml = ""
+  for( s=0; s<stepstack.length; s++ )
+  {
+    dynHtml += "<div><div class=\"steptxt\">"
+    + stepdata[ stepstack[s][0] ].txt + "</div>"
+
+    dynHtml += stepdata[ stepstack[s][0] ].indata.map( (inrr)=>{
+      if( inputdata[ inrr ].intype == "select" ){
+        return "<div class=\"inpbox row\"><div class=\"inptxt col\">" 
+        + inputdata[ inrr ].intxt + "</div><div class=\"col\"><select onchange=\"stepInput('"+inrr+"',this.value)\">" 
+        + "<option value=\"\">---</option>" 
+        + inputdata[ inrr ].inopts.map( (optrr)=>{
+          return "<option value=\"" + optrr[0] + "\">" + optrr[1] + "</option>"
+        }).join('') +  "</select></div></div>"
+      }
+    }).join('')
+
+    dynHtml += "</div>"
+
+    if( stepstack[s][1] == true ){
+      dynHtml += "<div style=\"padding:20px;\"><input id=\"xcmd\" type=\"button\" value=\"Next\" onclick=\"extend()\" /></div>"
+    }
+  }
+
+  document.getElementById('dyncont').innerHTML = dynHtml
+}
+
+/* ---------------- FIXED EXTEND ---------------- */
+
+let extend = ()=>{ 
+
+  let openstep = true
+
+  while( openstep == true ){
+
+    openstep = false
+
+    if( stepstack[ stepstack.length-1 ][1] == true ){
+
+      let current = stepstack[ stepstack.length-1 ][0]
+
+      /* 🔒 Prevent terminal steps from re-entering logic */
+      if( current != "origin-color" ){
+        break
+      }
+
+      let ready = true
+
+      for( n=0; n<stepdata[current].indata.length; n++ ){
+        if( inputvalue[ stepdata[current].indata[n] ][0] == false ){
+          ready = false
+        }
+      }
+
+      if( ready == true ){
+
+        
+        if( inputvalue["color1"][1] == "red" && inputvalue["color2"][1] == "blue" ){
+          stepstack[ stepstack.length-1 ][1] = false
+          stepstack.push( [ "result-purple",true ] )
+          openstep = true
+        } else 
+        if( inputvalue["color1"][1] == "blue" && inputvalue["color2"][1] == "red" ){
+          stepstack[ stepstack.length-1 ][1] = false
+          stepstack.push( [ "result-purple-rev",true ] )
+          openstep = true
+        } else 
+        if( inputvalue["color1"][1] == "red" && inputvalue["color2"][1] == "yellow" ){
+          stepstack[ stepstack.length-1 ][1] = false
+          stepstack.push( [ "result-orange",true ] )
+          openstep = true
+        } else 
+        if( inputvalue["color1"][1] == "yellow" && inputvalue["color2"][1] == "red" ){
+          stepstack[ stepstack.length-1 ][1] = false
+          stepstack.push( [ "result-orange-rev",true ] )
+          openstep = true
+        } else 
+        if( inputvalue["color1"][1] == "blue" && inputvalue["color2"][1] == "yellow" ){
+          stepstack[ stepstack.length-1 ][1] = false
+          stepstack.push( [ "result-green",true ] )
+          openstep = true
+        } else 
+        if( inputvalue["color1"][1] == "yellow" && inputvalue["color2"][1] == "blue" ){
+          stepstack[ stepstack.length-1 ][1] = false
+          stepstack.push( [ "result-green-rev",true ] )
+          openstep = true
+        } else 
+        if( inputvalue["color1"][1] == "red" && inputvalue["color2"][1] == "red" ){
+          stepstack[ stepstack.length-1 ][1] = false
+          stepstack.push( [ "result-red",true ] )
+          openstep = true
+        } else 
+        if( inputvalue["color1"][1] == "blue" && inputvalue["color2"][1] == "blue" ){
+          stepstack[ stepstack.length-1 ][1] = false
+          stepstack.push( [ "result-blue",true ] )
+          openstep = true
+        } else 
+        if( inputvalue["color1"][1] == "yellow" && inputvalue["color2"][1] == "yellow" ){
+          stepstack[ stepstack.length-1 ][1] = false
+          stepstack.push( [ "result-yellow",true ] )
+          openstep = true
+        }
+      }
+    }
+  }
+
+  htrefresh()
+}
+
+let initLoad = ()=>{ htrefresh() }
+
+</script></head>
+
+<body onload="initLoad()">
+<div id="algohead" class="container"><h5>Color Merge Algorithm</h5></div>
+<div id="dyncont" class="container">Loading...</div>
+</body></html>
