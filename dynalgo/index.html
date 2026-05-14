@@ -1,230 +1,490 @@
-<!doctype html>
-          <html>
-            <head>
-              <meta charset="utf-8">
-              <title>amirlogic | Dynalgo</title>
-              <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="My programmer homepage">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#0a0a0a">
 
-                let inputdata = {};
+	<title>amirlogic | Dynalgo</title>
 
-                async function sendToServer( ndl, cdata = {} ){
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-                  fetch('/api',{
+	<style>
+		:root {
+			--bg-primary: #0a0a0a;
+			--bg-secondary: #141414;
+			--bg-tertiary: #1a1a1a;
+			--text-primary: #ffffff;
+			--text-secondary: #a0a0a0;
+			--text-tertiary: #707070;
+			--accent-primary: #00d4ff;
+			--accent-secondary: #0066ff;
+			--accent-gradient: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
+			--border-color: rgba(255, 255, 255, 0.1);
+			--glass-bg: rgba(20, 20, 20, 0.7);
+			--glass-border: rgba(255, 255, 255, 0.1);
+		}
 
-                    method: 'POST',
-                    mode: 'cors', 
-                    cache: 'no-cache', 
-                    credentials: 'same-origin',
-                    headers: {
-                      'Content-Type': 'application/json'
-                      
-                    },
-                    redirect: 'follow', 
-                    referrerPolicy: 'no-referrer',
-                    body: JSON.stringify( { "ndl":ndl, "dyd":{ ...inputdata, ...cdata } } ),
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
-                  })
-                  .then(response => response.json())
-                  .then( (rdata) => {
+		html {
+			scroll-behavior: smooth;
+		}
 
-                      if( rdata.hasOwnProperty('redirect') ){
+		body {
+			font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+			background: var(--bg-primary);
+			color: var(--text-primary);
+			line-height: 1.6;
+			overflow-x: hidden;
+		}
 
-                        window.location.href = rdata.redirect;
-                      }
+		/* Background Pattern */
+		body::before {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: 
+				radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+				radial-gradient(circle at 80% 80%, rgba(0, 102, 255, 0.08) 0%, transparent 50%);
+			pointer-events: none;
+			z-index: 0;
+		}
 
-                      if( rdata.hasOwnProperty('rawdata') ){
+		/* Grain texture overlay */
+		body::after {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+			pointer-events: none;
+			z-index: 1;
+			opacity: 0.5;
+		}
 
-                        console.log(rawdata);
-                      }
+		/* Navigation */
+		nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 1000;
+			padding: 1.5rem 5%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			backdrop-filter: blur(20px);
+			background: rgba(10, 10, 10, 0.8);
+			border-bottom: 1px solid var(--border-color);
+			transition: all 0.3s ease;
+		}
 
-                    console.log(rdata)
-                  } );
-                }
+		nav.scrolled {
+			padding: 1rem 5%;
+			background: rgba(10, 10, 10, 0.95);
+		}
 
-              </script>
-              <style>
+		.logo {
+			font-family: 'Syne', sans-serif;
+			font-size: 1.5rem;
+			font-weight: 700;
+			background: var(--accent-gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			text-decoration: none;
+			letter-spacing: -0.02em;
+		}
 
-    header{
-        
-        height:50px;
-        padding:20px 10%;
-        font-weight:bold;
-        background-color:#FFFFFF;
-        color:#555555;
-    }
+		.nav-link {
+			color: var(--text-secondary);
+			text-decoration: none;
+			font-size: 0.95rem;
+			font-weight: 500;
+			transition: color 0.3s ease;
+			position: relative;
+		}
 
-    header a{
-        
-        text-decoration:none;
-    }
+		.nav-link::after {
+			content: '';
+			position: absolute;
+			bottom: -4px;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background: var(--accent-gradient);
+			transition: width 0.3s ease;
+		}
 
-    #headtext{
-        
-        color:#8B909A;
-        text-align:center;
-    }
+		.nav-link:hover {
+			color: var(--text-primary);
+		}
 
-    .celltxt p{
+		.nav-link:hover::after {
+			width: 100%;
+		}
 
-        color:#565656;
-        font-size:16px;
-    }
+		/* Section Styles */
+		section {
+			position: relative;
+			z-index: 10;
+			padding: 8rem 5%;
+			max-width: 1400px;
+			margin: 0 auto;
+		}
 
-    .celltxt h5{
+		.section-title {
+			font-family: 'Syne', sans-serif;
+			font-size: clamp(2rem, 5vw, 3.5rem);
+			font-weight: 700;
+			margin-bottom: 1rem;
+			letter-spacing: -0.02em;
+		}
 
-        color:#212a36;
-        margin-bottom:20px;
-    }
+		.section-subtitle {
+			font-size: 1.2rem;
+			color: var(--text-secondary);
+			margin-bottom: 4rem;
+			max-width: 600px;
+		}
 
-    #topimg{
-        
-        background-image: url('datacenter.jpg');
-        background-position: top;
-        background-repeat: no-repeat;
-        background-size:cover;
-        height:500px;
-    }
+		/* Grid Layout */
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+			gap: 2rem;
+			margin-top: 3rem;
+		}
 
-    .purpose{
-        
-        margin-top:50px;
-    }
+		/* Card Styles */
+		.card {
+			background: var(--glass-bg);
+			backdrop-filter: blur(20px);
+			border: 1px solid var(--glass-border);
+			border-radius: 16px;
+			padding: 2.5rem;
+			transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+			position: relative;
+			overflow: hidden;
+			opacity: 0;
+			transform: translateY(40px);
+		}
 
-    #visform{
-        
-        background-color:#E5E5E5;
-        padding-top:30px;
-        padding-bottom:30px;
-        
-    }
+		.card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: var(--accent-gradient);
+			opacity: 0;
+			transition: opacity 0.4s ease;
+			pointer-events: none;
+		}
 
-    h5{
+		.card:hover {
+			transform: translateY(-8px);
+			border-color: rgba(0, 212, 255, 0.3);
+			box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15);
+		}
 
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
+		.card:hover::before {
+			opacity: 0.05;
+		}
 
-    body{
-        
-        background-color:#FEFEFE;
-        font-size:90%;
-        
-    }
+		.card-title {
+			font-family: 'Syne', sans-serif;
+			font-size: 1.5rem;
+			font-weight: 600;
+			margin-bottom: 1rem;
+			color: var(--text-primary);
+			position: relative;
+			z-index: 1;
+		}
 
-    a{
-        text-decoration:none;
-    }
+		.card-text {
+			color: var(--text-secondary);
+			line-height: 1.7;
+			margin-bottom: 1.5rem;
+			position: relative;
+			z-index: 1;
+		}
 
-    footer{
-        
-        min-height:200px;
-        padding-top:30px;
-        padding-bottom:100px;
-        text-align:center;
-        font-size:14px;
-        background-color:#EEEEEE;
-        color:#777777;
-    }
+		.card-links {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			position: relative;
+			z-index: 1;
+		}
 
-    @media only screen and (max-width: 600px) {
-        
-        body {
-        font-size:16px;
-        }
-        
-        footer{
-            display:none;
-        }
+		.card-link {
+			color: var(--accent-primary);
+			text-decoration: none;
+			font-size: 0.95rem;
+			font-weight: 500;
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			transition: all 0.3s ease;
+			font-family: 'JetBrains Mono', monospace;
+		}
 
-        #topimg{
-            display:none;
-        }
-        
-    }
+		.card-link::before {
+			content: '→';
+			transition: transform 0.3s ease;
+		}
 
-</style>
-            </head>
-            <body>
-                <nav class="navbar navbar-light">
-		
-            <span class="navbar-brand mx-4" href="#">amirlogic</span>
-            
-            <div class="navbar-text mx-4"><a href="/userpanel" title="userpanel"><strong>&gt;&gt;</strong></a></div>
+		.card-link:hover {
+			color: var(--text-primary);
+			transform: translateX(4px);
+		}
 
-        </nav>
-        
-        <main class="container-fluid">
+		.card-link:hover::before {
+			transform: translateX(4px);
+		}
 
-            <div style="margin-top:100px;margin-bottom:40px;min-height:300px;">
-                
-                <div class="row">
-                    
-                                <div class="col-sm" style="font-size:130%;font-weight:300;padding-bottom:50px;">
+		/* Tech Stack */
+		.tech-stack {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+			margin-top: 1.5rem;
+		}
 
-                                    <div class="celltxt" style="padding:0 4%;">
-                                    
-                                        <h5>Git</h5>
-                                
-                    <p>Helps you using git command line tool</p>
-                    <p><a href="https://amirlogic.github.io/dynalgo/git.html">amirlogic.github.io/dynalgo/git.html</a></p>
-                    
+		.tech-badge {
+			padding: 0.5rem 1rem;
+			background: rgba(0, 212, 255, 0.1);
+			border: 1px solid rgba(0, 212, 255, 0.2);
+			border-radius: 6px;
+			color: var(--accent-primary);
+			font-size: 0.85rem;
+			font-weight: 500;
+			font-family: 'JetBrains Mono', monospace;
+			transition: all 0.3s ease;
+		}
 
-                                    </div>
+		.tech-badge:hover {
+			background: rgba(0, 212, 255, 0.2);
+			transform: scale(1.05);
+		}
 
-                                </div>
+		/* Footer */
+		footer {
+			position: relative;
+			z-index: 10;
+			text-align: center;
+			padding: 4rem 5%;
+			border-top: 1px solid var(--border-color);
+			color: var(--text-tertiary);
+			font-size: 0.9rem;
+		}
 
-				<div class="col-sm" style="font-size:130%;font-weight:300;padding-bottom:50px;">
+		/* Animations */
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
 
-                                    <div class="celltxt" style="padding:0 4%;">
-                                    
-                                        <h5>Enterobacteriacea Identification</h5>
-                                
-                    <p>Helps identify enterobacteriacea in the lab</p>
-                    <p><a href="https://amirlogic.github.io/dynalgo/enterobacteriaceae.html">amirlogic.github.io/dynalgo/enterobacteriaceae.html</a></p>
-                    
+		.fade-in-up {
+			animation: fadeInUp 0.8s ease forwards;
+		}
 
-                                    </div>
+		/* Responsive */
+		@media (max-width: 768px) {
+			nav {
+				padding: 1rem 5%;
+			}
 
-                                </div>
+			section {
+				padding: 5rem 5%;
+			}
 
-                                <div class="col-sm" style="font-size:130%;font-weight:300;padding-bottom:50px;">
-                        
-                                    <div class="celltxt" style="padding:0 4%;">
-                                        
-                                        <h5>Hepatitis B (french)</h5>
-    
-                    <p>Helps with hepatitis B serology interpretation</p>
-                    <p><a href="https://amirlogic.github.io/dynalgo/hepatite-b.html">amirlogic.github.io/dynalgo/hepatite-b.html</a></p>
-                                        
-                                    </div>
-                                    
-                                </div>
+			.grid {
+				grid-template-columns: 1fr;
+				gap: 1.5rem;
+			}
 
-								<div class="col-sm" style="font-size:130%;font-weight:300;padding-bottom:50px;">
-                        
-                                    <div class="celltxt" style="padding:0 4%;">
-                                        
-                                        <h5>Git Reset</h5>
-    
-                    <p>Learn how to undo commits</p>
-                    <p><a href="https://amirlogic.github.io/dynalgo/hepatite-b.html">amirlogic.github.io/dynalgo/git-reset.html</a></p>
-                                        
-                                    </div>
-                                    
-                                </div>
+			.card {
+				padding: 1.8rem;
+			}
+		}
 
-					
-                            </div>
-   
-            </div>
+		/* Loading animation for cards */
+		.visible {
+			opacity: 1 !important;
+			transform: translateY(0) !important;
+		}
+	</style>
+</head>
+<body>
+	<!-- Navigation -->
+	<nav id="navbar">
+		<a href="/" class="logo">amirlogic</a>
+	</nav>
 
-        </main>
-        
-        <footer>
-		
-		    <div style="padding:20px 0;">Copyright 2023</div>
-		
-	    </footer>
-            </body>
-          </html>
+	<!-- Main Content -->
+	<section id="dynalgo-tools" style="padding-top: 120px;">
+		<h2 class="section-title">Dynalgo Tools</h2>
+		<p class="section-subtitle">Interactive algorithmic document generators</p>
+
+		<div class="grid">
+			<div class="card">
+				<h3 class="card-title">Git</h3>
+				<p class="card-text">Helps you using git command line tool</p>
+				<div class="card-links">
+					<a href="https://amirlogic.github.io/dynalgo/git.html" class="card-link">amirlogic.github.io/dynalgo/git.html</a>
+				</div>
+			</div>
+
+			<div class="card">
+				<h3 class="card-title">Enterobacteriacea Identification</h3>
+				<p class="card-text">Helps identify enterobacteriacea in the lab</p>
+				<div class="card-links">
+					<a href="https://amirlogic.github.io/dynalgo/enterobacteriaceae.html" class="card-link">amirlogic.github.io/dynalgo/enterobacteriaceae.html</a>
+				</div>
+			</div>
+
+			<div class="card">
+				<h3 class="card-title">Hepatitis B (french)</h3>
+				<p class="card-text">Helps with hepatitis B serology interpretation</p>
+				<div class="card-links">
+					<a href="https://amirlogic.github.io/dynalgo/hepatite-b.html" class="card-link">amirlogic.github.io/dynalgo/hepatite-b.html</a>
+				</div>
+			</div>
+
+			<div class="card">
+				<h3 class="card-title">Git Reset</h3>
+				<p class="card-text">Learn how to undo commits</p>
+				<div class="card-links">
+					<a href="https://amirlogic.github.io/dynalgo/git-reset.html" class="card-link">amirlogic.github.io/dynalgo/git-reset.html</a>
+				</div>
+			</div>
+
+			<div class="card">
+				<h3 class="card-title">Color Merge Algorithm</h3>
+				<p class="card-text">Interactive color merging tool</p>
+				<div class="card-links">
+					<a href="https://amirlogic.github.io/dynalgo/color-merge.html" class="card-link">amirlogic.github.io/dynalgo/color-merge.html</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer>
+		<p>© 2026 amirlogic. Built with passion for web technologies.</p>
+	</footer>
+
+	<!-- Scripts -->
+	<script>
+		let inputdata = {};
+
+		async function sendToServer(ndl, cdata = {}) {
+			fetch('/api', {
+				method: 'POST',
+				mode: 'cors',
+				cache: 'no-cache',
+				credentials: 'same-origin',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				redirect: 'follow',
+				referrerPolicy: 'no-referrer',
+				body: JSON.stringify({"ndl": ndl, "dyd": {...inputdata, ...cdata}}),
+			})
+			.then(response => response.json())
+			.then((rdata) => {
+				if (rdata.hasOwnProperty('redirect')) {
+					window.location.href = rdata.redirect;
+				}
+				if (rdata.hasOwnProperty('rawdata')) {
+					console.log(rawdata);
+				}
+				console.log(rdata)
+			});
+		}
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+
+	<script>
+		gsap.registerPlugin(ScrollTrigger);
+
+		window.addEventListener('scroll', () => {
+			const navbar = document.getElementById('navbar');
+			if (window.scrollY > 100) {
+				navbar.classList.add('scrolled');
+			} else {
+				navbar.classList.remove('scrolled');
+			}
+		});
+
+		const cards = document.querySelectorAll('.card');
+		cards.forEach((card, index) => {
+			gsap.to(card, {
+				scrollTrigger: {
+					trigger: card,
+					start: 'top 80%',
+					toggleActions: 'play none none none'
+				},
+				opacity: 1,
+				y: 0,
+				duration: 0.8,
+				delay: index * 0.1,
+				ease: 'power3.out'
+			});
+		});
+
+		const sectionTitles = document.querySelectorAll('.section-title, .section-subtitle');
+		sectionTitles.forEach(title => {
+			gsap.from(title, {
+				scrollTrigger: {
+					trigger: title,
+					start: 'top 85%',
+					toggleActions: 'play none none none'
+				},
+				opacity: 0,
+				y: 30,
+				duration: 0.8,
+				ease: 'power3.out'
+			});
+		});
+
+		var sc_project = 11946176;
+		var sc_invisible = 1;
+		var sc_security = "b6cf0959";
+	</script>
+
+	<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+</body>
+</html>
