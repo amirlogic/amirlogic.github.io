@@ -1,387 +1,714 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="UTF-8">
+	<meta name="description" content="My programmer homepage">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-<meta charset="UTF-8">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#0a0a0a">
 
-<meta name="description" content="My programmer homepage">
+	<title>amirlogic | Developer Portfolio</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="btstrp_min.css">
+	<style>
+		:root {
+			--bg-primary: #0a0a0a;
+			--bg-secondary: #141414;
+			--bg-tertiary: #1a1a1a;
+			--text-primary: #ffffff;
+			--text-secondary: #a0a0a0;
+			--text-tertiary: #707070;
+			--accent-primary: #00d4ff;
+			--accent-secondary: #0066ff;
+			--accent-gradient: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
+			--border-color: rgba(255, 255, 255, 0.1);
+			--glass-bg: rgba(20, 20, 20, 0.7);
+			--glass-border: rgba(255, 255, 255, 0.1);
+		}
 
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		html {
+			scroll-behavior: smooth;
+		}
 
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-
-<link rel="manifest" href="/site.webmanifest">
-
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-<meta name="msapplication-TileColor" content="#da532c">
-
-<meta name="theme-color" content="#ffffff">
-
-<title>amirlogic | Welcome to my GitHub repository</title>
-
-<style>
-
-	header{
-		
-		height:50px;
-		padding:20px 10%;
-		font-weight:bold;
-		background-color:#FFFFFF;
-		color:#555555;
-	}
-
-	header a{
-		
-		text-decoration:none;
-	}
-
-	#headtext{
-		
-		color:#8B909A;
-		text-align:center;
-	}
-
-	.celltxt p{
-
-		color:#565656;
-		font-size:16px;
-	}
-
-	.celltxt h5{
-
-		color:#212a36;
-		margin-bottom:20px;
-	}
-
-	#topimg{
-		
-		background-image: url('datacenter.jpg');
-		background-position: top;
-		background-repeat: no-repeat;
-		background-size:cover;
-		height:500px;
-	}
-
-	.purpose{
-		
-		margin-top:50px;
-	}
-
-	#visform{
-		
-		background-color:#E5E5E5;
-		padding-top:30px;
-		padding-bottom:30px;
-		
-	}
-
-	h5{
-
-		font-family: Verdana, Geneva, Tahoma, sans-serif;
-	}
-
-	body{
-		
-		background-color:#FEFEFE;
-		font-size:90%;
-		
-	}
-
-
-	footer{
-		
-		min-height:200px;
-		padding-top:30px;
-		padding-bottom:100px;
-		text-align:center;
-		font-size:14px;
-		background-color:#EEEEEE;
-		color:#777777;
-	}
-
-	@media only screen and (max-width: 600px) {
-		
 		body {
-		font-size:16px;
-		}
-		
-		footer{
-			display:none;
+			font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+			background: var(--bg-primary);
+			color: var(--text-primary);
+			line-height: 1.6;
+			overflow-x: hidden;
 		}
 
-		#topimg{
-			display:none;
+		/* Background Pattern */
+		body::before {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: 
+				radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+				radial-gradient(circle at 80% 80%, rgba(0, 102, 255, 0.08) 0%, transparent 50%);
+			pointer-events: none;
+			z-index: 0;
 		}
-		
-	}
 
-</style>
+		/* Grain texture overlay */
+		body::after {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+			pointer-events: none;
+			z-index: 1;
+			opacity: 0.5;
+		}
 
+		/* Navigation */
+		nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 1000;
+			padding: 1.5rem 5%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			backdrop-filter: blur(20px);
+			background: rgba(10, 10, 10, 0.8);
+			border-bottom: 1px solid var(--border-color);
+			transition: all 0.3s ease;
+		}
+
+		nav.scrolled {
+			padding: 1rem 5%;
+			background: rgba(10, 10, 10, 0.95);
+		}
+
+		.logo {
+			font-family: 'Syne', sans-serif;
+			font-size: 1.5rem;
+			font-weight: 700;
+			background: var(--accent-gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			text-decoration: none;
+			letter-spacing: -0.02em;
+		}
+
+		.nav-link {
+			color: var(--text-secondary);
+			text-decoration: none;
+			font-size: 0.95rem;
+			font-weight: 500;
+			transition: color 0.3s ease;
+			position: relative;
+		}
+
+		.nav-link::after {
+			content: '';
+			position: absolute;
+			bottom: -4px;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background: var(--accent-gradient);
+			transition: width 0.3s ease;
+		}
+
+		.nav-link:hover {
+			color: var(--text-primary);
+		}
+
+		.nav-link:hover::after {
+			width: 100%;
+		}
+
+		/* Hero Section */
+		#hero {
+			position: relative;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 5%;
+			overflow: hidden;
+		}
+
+		#three-container {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 2;
+			opacity: 0.4;
+		}
+
+		#three-container canvas {
+			display: block;
+		}
+
+		.hero-content {
+			position: relative;
+			z-index: 3;
+			max-width: 900px;
+			text-align: center;
+			opacity: 0;
+			transform: translateY(30px);
+		}
+
+		.hero-title {
+			font-family: 'Syne', sans-serif;
+			font-size: clamp(2.5rem, 8vw, 6rem);
+			font-weight: 800;
+			line-height: 1.1;
+			margin-bottom: 1.5rem;
+			letter-spacing: -0.03em;
+		}
+
+		.hero-subtitle {
+			font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+			color: var(--text-secondary);
+			font-weight: 400;
+			margin-bottom: 3rem;
+			line-height: 1.6;
+		}
+
+		.gradient-text {
+			background: var(--accent-gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		/* Section Styles */
+		section {
+			position: relative;
+			z-index: 10;
+			padding: 8rem 5%;
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+
+		.section-title {
+			font-family: 'Syne', sans-serif;
+			font-size: clamp(2rem, 5vw, 3.5rem);
+			font-weight: 700;
+			margin-bottom: 1rem;
+			letter-spacing: -0.02em;
+		}
+
+		.section-subtitle {
+			font-size: 1.2rem;
+			color: var(--text-secondary);
+			margin-bottom: 4rem;
+			max-width: 600px;
+		}
+
+		/* Grid Layout */
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+			gap: 2rem;
+			margin-top: 3rem;
+		}
+
+		/* Card Styles */
+		.card {
+			background: var(--glass-bg);
+			backdrop-filter: blur(20px);
+			border: 1px solid var(--glass-border);
+			border-radius: 16px;
+			padding: 2.5rem;
+			transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+			position: relative;
+			overflow: hidden;
+			opacity: 0;
+			transform: translateY(40px);
+		}
+
+		.card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: var(--accent-gradient);
+			opacity: 0;
+			transition: opacity 0.4s ease;
+			pointer-events: none;
+		}
+
+		.card:hover {
+			transform: translateY(-8px);
+			border-color: rgba(0, 212, 255, 0.3);
+			box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15);
+		}
+
+		.card:hover::before {
+			opacity: 0.05;
+		}
+
+		.card-title {
+			font-family: 'Syne', sans-serif;
+			font-size: 1.5rem;
+			font-weight: 600;
+			margin-bottom: 1rem;
+			color: var(--text-primary);
+			position: relative;
+			z-index: 1;
+		}
+
+		.card-text {
+			color: var(--text-secondary);
+			line-height: 1.7;
+			margin-bottom: 1.5rem;
+			position: relative;
+			z-index: 1;
+		}
+
+		.card-links {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			position: relative;
+			z-index: 1;
+		}
+
+		.card-link {
+			color: var(--accent-primary);
+			text-decoration: none;
+			font-size: 0.95rem;
+			font-weight: 500;
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			transition: all 0.3s ease;
+			font-family: 'JetBrains Mono', monospace;
+		}
+
+		.card-link::before {
+			content: '→';
+			transition: transform 0.3s ease;
+		}
+
+		.card-link:hover {
+			color: var(--text-primary);
+			transform: translateX(4px);
+		}
+
+		.card-link:hover::before {
+			transform: translateX(4px);
+		}
+
+		/* Timeline/Tech Stack */
+		.tech-stack {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+			margin-top: 1.5rem;
+		}
+
+		.tech-badge {
+			padding: 0.5rem 1rem;
+			background: rgba(0, 212, 255, 0.1);
+			border: 1px solid rgba(0, 212, 255, 0.2);
+			border-radius: 6px;
+			color: var(--accent-primary);
+			font-size: 0.85rem;
+			font-weight: 500;
+			font-family: 'JetBrains Mono', monospace;
+			transition: all 0.3s ease;
+		}
+
+		.tech-badge:hover {
+			background: rgba(0, 212, 255, 0.2);
+			transform: scale(1.05);
+		}
+
+		/* CTA Button */
+		.cta-button {
+			display: inline-block;
+			padding: 1rem 2.5rem;
+			background: var(--accent-gradient);
+			color: var(--bg-primary);
+			text-decoration: none;
+			border-radius: 8px;
+			font-weight: 600;
+			font-size: 1rem;
+			transition: all 0.3s ease;
+			border: none;
+			cursor: pointer;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.cta-button::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+			transition: left 0.5s ease;
+		}
+
+		.cta-button:hover::before {
+			left: 100%;
+		}
+
+		.cta-button:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+		}
+
+		/* Footer */
+		footer {
+			position: relative;
+			z-index: 10;
+			text-align: center;
+			padding: 4rem 5%;
+			border-top: 1px solid var(--border-color);
+			color: var(--text-tertiary);
+			font-size: 0.9rem;
+		}
+
+		/* Animations */
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.fade-in-up {
+			animation: fadeInUp 0.8s ease forwards;
+		}
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			nav {
+				padding: 1rem 5%;
+			}
+
+			section {
+				padding: 5rem 5%;
+			}
+
+			.grid {
+				grid-template-columns: 1fr;
+				gap: 1.5rem;
+			}
+
+			.hero-title {
+				font-size: 2.5rem;
+			}
+
+			.hero-subtitle {
+				font-size: 1.1rem;
+			}
+
+			.card {
+				padding: 1.8rem;
+			}
+
+			#three-container {
+				opacity: 0.2;
+			}
+		}
+
+		/* Loading animation for cards */
+		.visible {
+			opacity: 1 !important;
+			transform: translateY(0) !important;
+		}
+
+		/* Scroll indicator */
+		.scroll-indicator {
+			position: absolute;
+			bottom: 3rem;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: 3;
+			opacity: 0;
+			animation: fadeInUp 1s ease 1.5s forwards, bounce 2s ease-in-out 2.5s infinite;
+		}
+
+		@keyframes bounce {
+			0%, 100% { transform: translate(-50%, 0); }
+			50% { transform: translate(-50%, 10px); }
+		}
+
+		.scroll-indicator svg {
+			width: 24px;
+			height: 24px;
+			stroke: var(--accent-primary);
+		}
+	</style>
 </head>
 
 <body>
-
-	<nav class="navbar navbar-light">
-		
-		<span class="navbar-brand " href="#">amirlogic</span>
-		
-		<div class="navbar-text"><a href="/userpanel" title="userpanel"><strong>&gt;&gt;</strong></a></div>
-
+	<!-- Navigation -->
+	<nav id="navbar">
+		<a href="#" class="logo">amirlogic</a>
+		<!-- <a href="/" class="nav-link" title="userpanel"> →</a> -->
 	</nav>
 
+	<!-- Hero Section -->
+	<section id="hero">
+		<div id="three-container"></div>
+		
+		<div class="hero-content">
+			<h1 class="hero-title">Building <span class="gradient-text">Data-Driven</span> Web Experiences</h1>
+			<p class="hero-subtitle">Full-stack developer specializing in modern web technologies, from vanilla JavaScript to React ecosystems</p>
+		</div>
+
+		<div class="scroll-indicator">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+				<path d="M12 5v14M19 12l-7 7-7-7"/>
+			</svg>
+		</div>
+	</section>
+
+	<!-- About Section -->
+	<section id="about">
+		<h2 class="section-title">About Me</h2>
+		<p class="section-subtitle">Crafting web applications since 2007</p>
+		
+		<div class="grid">
+			<div class="card">
+				<h3 class="card-title">The Journey</h3>
+				<p class="card-text">My name is Amir, I have been learning web technologies since I created my first web page back in 2007. Two years later I created my first dynamic website using PHP and MySQL.</p>
+				<div class="tech-stack">
+					<span class="tech-badge">PHP</span>
+					<span class="tech-badge">MySQL</span>
+					<span class="tech-badge">Web Development</span>
+				</div>
+			</div>
+
+			<div class="card">
+				<h3 class="card-title">NestedLogic</h3>
+				<p class="card-text">In 2017, I started working on NestedLogic, a web-based tool to create full stack web applications using vanilla JavaScript. Two years later, it was functional, and I used it to successfully create an inventory management software.</p>
+				<div class="tech-stack">
+					<span class="tech-badge">Vanilla JS</span>
+					<span class="tech-badge">Full Stack</span>
+					<span class="tech-badge">Tool Builder</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Projects Section -->
+	<section id="projects">
+		<h2 class="section-title">Featured Projects</h2>
+		<p class="section-subtitle">A selection of my work across different technologies</p>
+
+		<div class="grid">
+			<div class="card">
+				<h3 class="card-title">React & TypeScript</h3>
+				<p class="card-text">Modern interactive applications built with React and TypeScript, featuring drag-and-drop interfaces and quiz systems.</p>
+				<div class="card-links">
+					<a href="https://github.com/amirlogic/react-drag-and-drop" target="_blank" class="card-link">Drag and Drop using Beautiful DnD</a>
+					<a href="https://github.com/amirlogic/drag-and-drop-quiz" target="_blank" class="card-link">Drag and Drop Quiz</a>
+					<a href="https://github.com/amirlogic/didactic-robot" target="_blank" class="card-link">To-do List Application</a>
+				</div>
+			</div>
+
+			<div class="card">
+				<h3 class="card-title">NRGA (energia) Stack</h3>
+				<p class="card-text">Next.js, Redis, GraphQL and API - A powerful modern stack for building scalable applications.</p>
+				<div class="card-links">
+					<a href="https://github.com/amirlogic/energia-me" target="_blank" class="card-link">My Personal Blog</a>
+					<a href="https://github.com/amirlogic/funbio" target="_blank" class="card-link">Functional Biology</a>
+				</div>
+				<div class="tech-stack">
+					<span class="tech-badge">Next.js</span>
+					<span class="tech-badge">Redis</span>
+					<span class="tech-badge">GraphQL</span>
+				</div>
+			</div>
+
+			<div class="card">
+				<h3 class="card-title">Dynalgo</h3>
+				<p class="card-text">Create dynamic documents with algorithmic content generation. An experimental approach to document creation.</p>
+				<div class="card-links">
+					<a href="https://amirlogic.github.io/dynalgo" target="_blank" class="card-link">View Examples</a>
+				</div>
+			</div>
+
+			<div class="card">
+				<h3 class="card-title">Experiments</h3>
+				<p class="card-text">A collection of small experiments exploring various web technologies and creative coding concepts.</p>
+				<div class="card-links">
+					<a href="https://amirlogic.github.io/experiments" target="_blank" class="card-link">See Experiments</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer>
+		<p>© 2026 amirlogic. Built with passion for web technologies.</p>
+	</footer>
+
+	<!-- Scripts -->
 	<script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+
 	<script>
-		// Set up the scene, camera, and renderer
-		var scene = new THREE.Scene();
-		var camera = new THREE.PerspectiveCamera(75, window.innerWidth/400, 0.1, 1000);	// window.innerHeight
-		var renderer = new THREE.WebGLRenderer();
-		renderer.setSize(window.innerWidth, 400);	// window.innerHeight
-		document.body.appendChild(renderer.domElement);
+		// Three.js Scene
+		const container = document.getElementById('three-container');
+		const scene = new THREE.Scene();
+		const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+		const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+		
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+		container.appendChild(renderer.domElement);
 
-		// Create a blue cube and add it to the scene
-		var geometry = new THREE.BoxGeometry();
-		var material = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
-		var cube = new THREE.Mesh( geometry, material );
-		scene.add( cube );
+		// Create multiple cubes with different sizes
+		const cubes = [];
+		const colors = [0x00d4ff, 0x0066ff, 0x00ffaa];
+		
+		for (let i = 0; i < 3; i++) {
+			const geometry = new THREE.BoxGeometry(1 + i * 0.3, 1 + i * 0.3, 1 + i * 0.3);
+			const material = new THREE.MeshBasicMaterial({ 
+				color: colors[i],
+				wireframe: true,
+				transparent: true,
+				opacity: 0.3 - i * 0.08
+			});
+			const cube = new THREE.Mesh(geometry, material);
+			cube.rotation.x = Math.random() * Math.PI;
+			cube.rotation.y = Math.random() * Math.PI;
+			scene.add(cube);
+			cubes.push(cube);
+		}
 
-		// Set the initial position of the camera and the cube
 		camera.position.z = 5;
-		cube.position.set(0, 0, 0);
 
-		// Animate the cube
+		// Animation
 		function animate() {
 			requestAnimationFrame(animate);
-			cube.rotation.x += 0.01;
-			cube.rotation.y += 0.01;
+			
+			cubes.forEach((cube, index) => {
+				cube.rotation.x += 0.003 + index * 0.001;
+				cube.rotation.y += 0.005 + index * 0.001;
+			});
+			
 			renderer.render(scene, camera);
 		}
 		animate();
+
+		// Handle resize
+		window.addEventListener('resize', () => {
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+		});
+
+		// GSAP Animations
+		gsap.registerPlugin(ScrollTrigger);
+
+		// Hero animation
+		gsap.to('.hero-content', {
+			opacity: 1,
+			y: 0,
+			duration: 1.2,
+			ease: 'power3.out',
+			delay: 0.3
+		});
+
+		// Navbar scroll effect
+		window.addEventListener('scroll', () => {
+			const navbar = document.getElementById('navbar');
+			if (window.scrollY > 100) {
+				navbar.classList.add('scrolled');
+			} else {
+				navbar.classList.remove('scrolled');
+			}
+		});
+
+		// Card animations on scroll
+		const cards = document.querySelectorAll('.card');
+		cards.forEach((card, index) => {
+			gsap.to(card, {
+				scrollTrigger: {
+					trigger: card,
+					start: 'top 80%',
+					toggleActions: 'play none none none'
+				},
+				opacity: 1,
+				y: 0,
+				duration: 0.8,
+				delay: index * 0.1,
+				ease: 'power3.out'
+			});
+		});
+
+		// Section titles animation
+		const sectionTitles = document.querySelectorAll('.section-title, .section-subtitle');
+		sectionTitles.forEach(title => {
+			gsap.from(title, {
+				scrollTrigger: {
+					trigger: title,
+					start: 'top 85%',
+					toggleActions: 'play none none none'
+				},
+				opacity: 0,
+				y: 30,
+				duration: 0.8,
+				ease: 'power3.out'
+			});
+		});
+
+		// Parallax effect for hero
+		gsap.to('.hero-content', {
+			scrollTrigger: {
+				trigger: '#hero',
+				start: 'top top',
+				end: 'bottom top',
+				scrub: true
+			},
+			y: 150,
+			opacity: 0
+		});
+
+		// Analytics
+		var sc_project = 11946176;
+		var sc_invisible = 1;
+		var sc_security = "b6cf0959";
 	</script>
-
-	<main class="container-fluid vh-100">
-
-		<div style="margin-top:100px;margin-bottom:40px;min-height:300px;">
-			
-			<div class="row">
-			
-				<div class="col-sm" style="font-size:130%;font-weight:300;padding-bottom:50px;">
-					
-					<div class="celltxt" style="padding:0 4%;">
-						
-						
-						<h5>Welcome to my GitHub Repo</h5>
-						
-						<p>My name is Amir, I have been learning web technologies since I created my first web page back in 2007</p>
-
-						<p>Two years later I created my first dynamic website using PHP and MySQL</p>
-
-						<p><!-- Getting user feedback as early as possible and then on a regular basis is the way to go for creating the best final product --></p>
-						
-						
-					</div>
-					
-					
-					<div style="padding:0 4%;">
-					
-					</div>
-					
-				</div>
-				
-				<div class="col-sm" style="font-size:130%;font-weight:300;padding-bottom:50px;">
-					
-					<div class="celltxt" style="padding:0 4%;">
-						
-						<h5>Data-driven web applications</h5>
-
-						<p>Web applications have a fantastic power, but I think that this power can be made more accessible, especially when it comes to working with data.</p>
-
-						<p>In 2017, I started working on NestedLogic, a web-based tool to create full stack web applications using vanilla javascript. 
-							Two years later, it was functionnal, and I used it to successfully create an inventory management software.</p>
-						
-						<p></p>
-						
-					</div>
-					
-					
-				</div>
-				
-			</div>
-			
-			<div class="row">
-			
-				<div class="col-sm" style="font-size:130%;font-weight:300;padding-bottom:50px;">
-					
-					<div class="celltxt" style="padding:0 4%;">
-						
-						<h5>React and Typescript</h5>
-						
-						<p><a href="https://github.com/amirlogic/react-drag-and-drop" target="_blank">Drag and Drop using Beautiful DnD</a></p>
-
-						<p><a href="https://github.com/amirlogic/drag-and-drop-quiz" target="_blank">Drag and Drop Quiz</a></p>
-
-						<p><a href="https://github.com/amirlogic/didactic-robot" target="_blank">To-do list</a></p>
-						
-					</div>
-					
-					
-					<div style="padding:0 4%;">
-					
-					</div>
-					
-				</div>
-				
-				<div class="col-sm" style="font-size:130%;font-weight:300;padding-bottom:50px;">
-					
-					<div class="celltxt" style="padding:0 4%;">
-						
-						
-						<h5>NRGA (energia) stack</h5>
-						
-						<p>Next.js Redis GraphQL and API</p>
-
-						<p><a href="https://github.com/amirlogic/energia-me" target="_blank">My Personal Blog</a></p>
-
-						<p><a href="https://github.com/amirlogic/funbio" target="_blank">Functional Biology</a></p>
-						
-						
-					</div>
-					
-					
-				</div>
-				
-			</div>
-
-			<div class="row">
-                    
-				<div class="col-sm" style="font-size:130%;font-weight:300;padding-bottom:50px;">
-
-								<div class="celltxt" style="padding:0 4%;">
-								
-									<h5>Dynalgo</h5>
-						
-				<p>Dynalgo allows you to to create dynamic documents</p>
-
-				<p><a href="https://amirlogic.github.io/dynalgo">dynalgo examples</a></p>
-
-								</div>
-
-				</div>
-
-				<div class="col-sm" style="font-size:130%;font-weight:300;padding-bottom:50px;">
-					
-					<div class="celltxt" style="padding:0 4%;">
-										
-										<h5>Experiments</h5>
-							
-					<p>Some small experiments</p>
 	
-					<p><a href="https://amirlogic.github.io/experiments">see experiments</a></p>
-										
-					</div>
-								
-				</div>
-
-			</div>
-			
-		</div>
-
-	</main>
-
-	<!-- <div id="visform">
-		
-			<form action="submsg.html" method="get" style="margin:30px 20%;">
-				
-				<div style="font-size:20px;">Let's start today!</div>
-				
-				<div><input type="email" name="email" placeholder="email" style="width:300px; height:38px; padding:6px; vertical-align:middle;" required>
-			
-				<input type="submit" class="btn btn-info" value="Send"></div>
-				
-				<div style="margin-top:10px;"><textarea name="msg" rows="4" cols="60" placeholder="Message" style="padding:10px;"></textarea></div>
-			
-			</form>
-		
-	</div> -->
-
-	<!-- <section>
-
-		<div class="container" style="padding-bottom:100px;margin-top:100px;">
-
-			<h5>Steps</h5>
-
-			<div class="card-group" style="margin-top:20px;">
-				
-			<div class="card">
-				
-				<div class="card-body">
-					<h5 class="card-title">1. Choose plan</h5>
-
-					<p class="card-text" style="color:#565656;"><span>Define your monthly budget to support the development</span><br>
-						<a href="plans-and-pricing.html"><button class="btn btn-primary" style="margin-top:10px;">Show plans</button></a></p>
-					<p class="card-text"><small class="text-muted">billed monthly</small></p>
-				</div>
-				
-			</div>
-			
-			<div class="card">
-				
-				<div class="card-body">
-					<h5 class="card-title">2. Active development</h5>
-
-					<p class="card-text" style="color:#565656;">
-					
-					<span>Every month, functionalities are added or updated, while your prototype always remains usable.</span></p>
-					
-					<p class="card-text"><small class="text-muted">billed monthly</small></p>
-				</div>
-				
-			</div>
-			
-			<div class="card">
-				
-				<div class="card-body">
-					<h5 class="card-title">3. Code is released</h5>
-					
-					<p class="card-text" style="color:#565656;"><span>After the end of the subscribtion, you can get the server-side code and deploy the app on your servers</span></p>
-					
-					<p class="card-text"><small class="text-muted">billed monthly</small></p>
-				</div>
-				
-			</div>
-			
-			</div>
-			
-			</div>
-			
-		</div>
-
-	</section> -->
-
-	<footer>
-		
-		<div style="padding:20px 0;">Copyright 2025</div>
-		
-	</footer>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-	<script src="main.js"></script>
-
-	<script type="text/javascript">
-	var sc_project=11946176; 
-	var sc_invisible=1; 
-	var sc_security="b6cf0959"; 
-	</script>
-	<script type="text/javascript"
-	src="https://www.statcounter.com/counter/counter.js"
-	async></script>
-
+	<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
 </body>
-
 </html>
